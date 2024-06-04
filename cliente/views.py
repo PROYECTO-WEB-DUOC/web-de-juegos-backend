@@ -10,3 +10,15 @@ def index(request):
 def gow(request):
     context={}
     return render(request, 'cliente/Juegos/gow.html', context)
+
+def spider(request):
+    context={}
+    return render(request, 'cliente/Juegos/spider.html', context)
+
+def bloodborne(request):
+    context={}
+    return render(request, 'cliente/Juegos/bloodborne.html', context)
+
+def dmc(request):
+    context={}
+    return render(request, 'cliente/Juegos/dmc.html', context)
