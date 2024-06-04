@@ -5,3 +5,8 @@ from django.shortcuts import render
 def index(request):
     context={}
     return render(request, 'cliente/index.html', context)
+
+
+def gow(request):
+    context={}
+    return render(request, 'cliente/Juegos/gow.html', context)
