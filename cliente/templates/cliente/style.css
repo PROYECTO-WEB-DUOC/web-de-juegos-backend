@@ -1,0 +1,370 @@
+body{
+    background: linear-gradient(rgb(40, 40, 40), rgb(56, 56, 56));;
+    
+   }
+   
+   
+   
+   
+   .juntar{
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: space-evenly;
+       
+   }
+   
+   
+   .titulo2{
+       font-family:monospace;
+       color: rgb(255, 255, 255);
+       margin-left: 5%;
+       
+       text-align: left;
+   }
+   
+   .modal-backdrop {
+       --bs-backdrop-zindex: none;
+   }
+   
+   .btn-primary {
+       margin-left: 5px;
+       
+   }
+   
+   .snavbar{
+     background: linear-gradient(rgb(40, 40, 40), rgb(56, 56, 56));;
+     --bs-navbar-active-color: white;
+     
+   }
+   
+   .snav-link{
+     color: white;
+   }
+   
+   .registrarse{
+       margin-bottom: 1px;
+   }
+   
+   .option-shop{
+       margin: auto;
+   }
+   
+   hr{
+       height: 1px;
+       
+   }
+   
+   .card-text{
+       font-style: italic;
+      
+       text-align: center;
+   }
+   
+   
+   
+   
+   .btn{
+       color: white;
+       background-color: #0b5ed7;
+       border-color: #0b5ed7;
+   }
+   
+   .cards{
+       
+           
+       --bs-card-border-width: 0px;
+       -webkit-box-shadow: 6px 0px 26px 5px rgba(0,0,0,1);
+       -moz-box-shadow: 6px 0px 26px 5px rgba(0,0,0,1);
+       box-shadow: 6px 0px 26px 5px rgba(0,0,0,1);
+       box-sizing: border-box;
+       border: 1px solid black ; 
+       margin: 5% 20px;
+      
+       max-width: 100%;
+       max-height: 100%;
+        transition: 1.5s ease;
+         -moz-transition: 1.5s ease; /* Firefox */
+         -webkit-transition: 1.5s ease; /* Chrome - Safari */
+         -o-transition: 1.5s ease; /* Opera */
+         border-radius: 20px;
+       
+    }
+    .cards:hover{
+        transform : scale(1.21);
+        -moz-transform : scale(1.1); /* Firefox */
+        -webkit-transform : scale(1.1); /* Chrome - Safari */
+        -o-transform : scale(1.1); /* Opera */
+        -ms-transform : scale(1.1); /* IE9 */
+        
+    }
+   
+   
+   .detalles{
+       color: white;
+       text-decoration: none;
+     font-style: italic;   
+   }
+   
+   
+   
+   
+   
+   #footer{
+       --bs-bg-opacity: 0;
+   }
+   .line {
+       border-top: 2px solid;
+       margin: 20px 0px 0px 5px;
+       flex: 1 0 0;
+       color: black;
+       margin-right: 100px;
+   }
+   
+   .linea{
+       display: flex;
+   }
+   
+   .fixed-top {
+       position: fixed;
+       top: 0;
+       right: 0;
+       left: 0;
+       z-index: 1030;
+   }
+   
+   @media (min-width: 992px){
+   .navbar-expand-lg {
+       flex-wrap: nowrap;
+       justify-content: flex-start;
+       
+   }}
+   
+   
+     
+     @media only screen and (max-width: 760px) {
+       .btn-primary{
+           margin-left: 0px;
+           
+       }
+     }
+   
+     @media only screen and (max-width: 760px) {
+       .line{
+           margin: 20px 25px 0px 5px;
+           
+       }
+     }
+   
+     @media only screen and (max-width: 760px) {
+       .navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
+           flex-wrap: nowrap;
+           
+       }
+     }
+     html {
+       min-height: 100%;
+       position: relative;
+     }
+     body {
+       margin: 0;
+       margin-bottom: 40px;
+     }
+     footer {
+       
+       position: absolute;
+       bottom: 0;
+       width: 100%;
+       height: 10px;
+       color: #fff;
+       
+     }
+     
+   
+   
+   .contenedor1{
+     display: flex;
+   
+     flex-wrap: wrap;
+     margin: auto;
+     justify-content: space-evenly;
+     width: 85%;
+     box-sizing: border-box;
+   }
+   
+   .contenedor4,.contenedor2,.contenedor3{
+     background-color: #fff;
+     margin: 10px;
+     flex-basis: 30%; 
+     flex-grow: 1; 
+    max-width: 100%;
+   }
+   
+   
+   .contador{
+    
+    
+    
+    margin: auto;
+     text-align: center;
+     width: 100%;
+     
+     font-size: 3.4vw;
+    color: #fff;
+   
+   }
+   
+   video{
+     width: 100%;
+     opacity: 0.3;
+   }
+   
+   
+   
+   .video {
+     
+     position: relative;
+     margin-top: 55px;
+     background: linear-gradient(rgb(40, 40, 40), rgb(56, 56, 56));
+   }
+   
+   .boton {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+      
+   }
+   
+   .imagen{
+     
+     width: 50%;
+     border: 0px solid black;
+     border-radius: 15px;
+     
+   }
+   
+   
+   
+   
+   .carousel-item{
+     text-align: center;
+   }
+   
+   .carousel-control-next, .carousel-control-prev {
+   
+     width:30%;
+     
+   }
+   
+   
+   .nav-item:hover{
+     background-color:#ebeef0;
+     
+     border-radius: 32px;
+     transition: .25s;
+   
+   }
+   
+   
+   
+   @keyframes show{
+     from{
+       opacity: 0;
+       scale: 25%;
+     }
+     to{
+       opacity: 1;
+       scale: 100%;
+     }
+   }
+   
+   .contenedor,.contador,.carousel,.cards {
+     view-timeline-name: --contenedor ;
+     view-timeline-axis: block;
+   
+     animation-timeline:--contenedor ;
+     animation-name: show;
+   
+     animation-range: entry 25% cover 30%;
+     animation-fill-mode:both ;
+   }
+   
+   
+   .navbar-text{
+     color: #fff;
+     text-decoration-line: none;
+   }
+   b{
+     color: #fff;
+     
+   }
+   @media only screen and (max-width: 990px) {
+   #iniciar{
+     margin-left: 0;
+     margin-top: 5px;
+   }}
+   
+   .btn-primary{
+     margin-bottom: 5px;
+   }
+   
+   #formulario{
+   color: #fff;
+   text-decoration-line: none;
+   }
+   .btn-outline-success {
+     margin-left:2px ;
+   }
+   
+   
+   .navbar-nav{
+    
+     font-size: 20px;
+     font-weight: 500; 
+     
+   }
+   
+   .dropdown-item:hover {
+     background-color:#ebeef0;
+   }
+   .dropdown-item:active {
+     background-color:#0b5ed7;
+   }
+   
+   .contenedor2,.contenedor3,.contenedor4{
+     border: 5px solid black;
+     border-radius: 10px;
+   }
+   
+   .cards{
+     width: 384px;
+   }
+   
+   .imagen2{
+     width: 100%; height: 300px; border-radius: 20px; 
+   }
+   
+   @media only screen and (max-width: 465px){
+   .cards{
+       max-width: calc(100vw - 42px);
+       margin: auto;
+       margin-bottom: 10px;
+       
+   }}
+   
+   .enlace{
+     width: 100%; height: 300px; position: absolute;
+   }
+   
+   @media only screen and (max-width: 768px){
+     .imagen{
+         width: 90%;
+         
+     }}
+     @media only screen and (max-width: 768px){
+       .contador {
+         font-size: 5.0vw;
+         
+         color: #fff;
+     }}
+     
