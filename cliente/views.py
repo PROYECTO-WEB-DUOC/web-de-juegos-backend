@@ -12,6 +12,11 @@ def crud(request):
     context={'clientes': clientes}
     return render(request, 'cliente/crud.html', context)
 
+def genero(request):
+    generos=Genero.objects.all()
+    context={'generos': generos}
+    return render(request,'cliente/crud.html',context)
+
 def clientesAdd(request):
     context={'form': forms.ClienteForm()}
     #verifico que la petición sea POST
