@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import  Cliente,Genero
+from . import forms
 # Create your views here.
 
 def index(request):
@@ -10,11 +11,22 @@ def crud(request):
     clientes=Cliente.objects.all()
     context={'clientes': clientes}
     return render(request, 'cliente/crud.html', context)
+
 def clientesAdd(request):
-    if request.method is not "POST":
-        generos=Genero.objects.all()
-        context={'generos':generos}
-        return render(request, 'cliente/Registros/crearc',context)
+    context={'form': forms.ClienteForm()}
+    #verifico que la petición sea POST
+    if request.method=='POST':
+        #con el request recupero los datos del formulario
+        formulario=forms.ClienteForm(context=request.POST, files=request.FILES)       
+        #valido el formulario
+        if formulario.is_valid:
+            #lo guardo en la BD
+            formulario.save()
+            #agrego un mensaje de exito
+            context={'mensaje':"Alumno guardado Correctamente!!"}
+        else:
+            context["form"]=formulario
+    return render(request,'cliente/Registros/crearc.html', context)
 
 def gow(request):
     context={}

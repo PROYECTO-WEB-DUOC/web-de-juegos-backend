@@ -11,10 +11,9 @@
 {% endblock %}
 
 {% block contenido %}
-
     <div class="container">
         <h2 class="cuadrado">Registrarse</h2>
-        <form action="clientesAdd"  method="POST" class="registro-form">
+        <form action=""  method="POST" enctype="multipart/form-data" class="registro-form">
             {% csrf_token %}
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" class="input" placeholder="Ingrese su nombre aqui" name="nombre" required>
@@ -37,14 +36,13 @@
             <label for="confirmar-contrasena">Confirmar contraseña:</label>
             <input type="password" class="input" placeholder="confirme su contraseña" id="confirmar_contraseña" name="confirmar_contraseña" required>
             <div id="mensaje5" class="errores"> Las contraseñas deben ser iguales</div>
-            <pre>Genero:  <select name="genero" id=""></select>
-            <input type="submit" id="enviar"  value="Registrarse ">
+            <br>
 
             
-            
+            <input type="submit" id="enviar"  value="Registrarse ">
+       
         </form>
     </div>
-
     <script>
         var expr= /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         $(document).ready(function(){

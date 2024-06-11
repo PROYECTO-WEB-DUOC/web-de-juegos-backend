@@ -1,6 +1,6 @@
 body {
   /* Establece la imagen de fondo y asegúrate de que cubra toda la ventana del navegador */
-  background-image: url("{% static 'cliente/img/fondos.jpg'  %}");
+  background-color: rgb(80, 77, 77);
   background-size: cover;
   /* Fija la imagen para que no se desplace con el contenido */
   background-attachment: fixed;
@@ -11,6 +11,10 @@ body {
     
     
 }
+
+
+
+
   /*registrarse*/
 
 
@@ -33,10 +37,6 @@ body {
       
       
   }}
-
-.modal-backdrop{
-  --bs-backdrop-zindex: none !important;
-}  
 .cuadrado {
     width: auto;
     height: auto;
