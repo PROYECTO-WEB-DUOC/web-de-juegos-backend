@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('index',views.index, name='index'),
     path('crud', views.crud, name='crud'),
-    path('clientesAdd', views.clientesAdd, name='clientesAdd'),
+    
     path('gow',views.gow, name='gow'),
     path('spider',views.spider, name='spider'),
     path('bloodborne',views.bloodborne, name='bloodborne'),

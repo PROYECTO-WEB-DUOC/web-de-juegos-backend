@@ -16,6 +16,7 @@
         <h2 class="cuadrado">Registrarse</h2>
         <form action=""  method="POST" enctype="multipart/form-data" class="registro-form">
             {% csrf_token %}
+            {{ form.as_table }}
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" class="input" placeholder="Ingrese su nombre aqui" name="nombre" required>
             <div id="mensaje1" class="errores"> Dame tu nombre</div>

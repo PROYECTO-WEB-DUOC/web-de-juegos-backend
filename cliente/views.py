@@ -12,26 +12,11 @@ def crud(request):
     context={'clientes': clientes}
     return render(request, 'cliente/crud.html', context)
 
-def genero(request):
-    generos=Genero.objects.all()
-    context={'generos': generos}
-    return render(request,'cliente/crud.html',context)
 
 def clientesAdd(request):
-    context={'form': forms.ClienteForm()}
-    #verifico que la petición sea POST
-    if request.method=='POST':
-        #con el request recupero los datos del formulario
-        formulario=forms.ClienteForm(context=request.POST, files=request.FILES)       
-        #valido el formulario
-        if formulario.is_valid:
-            #lo guardo en la BD
-            formulario.save()
-            #agrego un mensaje de exito
-            context={'mensaje':"Alumno guardado Correctamente!!"}
-        else:
-            context["form"]=formulario
-    return render(request,'cliente/Registros/crearc.html', context)
+    generos=Genero.objects.all()
+    context={'generos':generos}
+    return render(request,'cliente/crud.html', context)
 
 def gow(request):
     context={}
