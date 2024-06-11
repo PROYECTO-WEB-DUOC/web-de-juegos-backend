@@ -1,0 +1,95 @@
+{% extends 'cliente/home.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static  'cliente/css/crearc.css' %}">
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'cliente/js/generador.js'%}"></script>
+   
+    <script src="{% static 'cliente/js/api.js'%}"></script>
+{% endblock %}
+
+{% block contenido %}
+
+    <div class="container">
+        <h2 class="cuadrado">Registrarse</h2>
+        <form action="clientesAdd"  method="POST" class="registro-form">
+            {% csrf_token %}
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" class="input" placeholder="Ingrese su nombre aqui" name="nombre" required>
+            <div id="mensaje1" class="errores"> Dame tu nombre</div>
+            
+
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" class="input" name="apellido" placeholder="Ingrese su apellido aqui" required>
+            <div id="mensaje2" class="errores"> Dame tu Apellido</div>
+
+            <label for="correo" >Correo electrónico: </label>
+            <input type="email" id="correo" class="input" placeholder="Ingrese su cooreo aqui" name="correo" required>
+            <div id="mensaje3" class="errores"> Correo invalido</div>
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" class="input" id="contraseña" placeholder="ingrese contraseña" name="contraseña" required> <button id="boton" > Generar Contraseña</button>
+            <button type="button" id="mostrar_contraseña"  >Mostrar Contraseña</button>
+            <button type="button" id="ocultar_contraseña" style="display: none;" >Ocultar Contraseña</button>
+            <div id="mensaje4" class="errores"> La contraseña debe tener un minimo de 8 caracteres y una mayusculas</div>
+
+            <label for="confirmar-contrasena">Confirmar contraseña:</label>
+            <input type="password" class="input" placeholder="confirme su contraseña" id="confirmar_contraseña" name="confirmar_contraseña" required>
+            <div id="mensaje5" class="errores"> Las contraseñas deben ser iguales</div>
+            <pre>Genero:  <select name="genero" id=""></select>
+            <input type="submit" id="enviar"  value="Registrarse ">
+
+            
+            
+        </form>
+    </div>
+
+    <script>
+        var expr= /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        $(document).ready(function(){
+            $('#enviar').click(function(){
+                var nombre=$('#nombre').val()
+                var apellido=$('#apellido').val()
+                var correo=$('#correo').val()
+                var contraseña=$('#contraseña').val()
+                var contraseña2=$('#confirmar_contraseña').val()
+                
+                if(nombre==""){
+                    $("#mensaje1").fadeIn();
+                    return false
+                }else{
+                    $("#mensaje1").fadeOut();
+                }
+
+                if(apellido==""){
+                   $("#mensaje2").fadeIn();
+                   return false 
+                }else{
+                    $("#mensaje2").fadeOut();
+                }
+                if(correo==''||!expr.test(correo)){
+                    $("#mensaje3").fadeIn();
+                    return false
+                }else{
+                    $("#mensaje3").fadeOut();
+                }
+
+                console.log(contraseña)
+                if(contraseña.length<8){
+                    $("#mensaje4").fadeIn();
+                    return false
+                }else{
+                    $("#mensaje4").fadeOut();
+                }
+                if(contraseña2!=contraseña){
+                    $("#mensaje5").fadeIn();
+                    return false
+                }else{
+                    $('#mensaje5').fadeOut();
+                }
+                
+            })
+        })
+    </script>
+{% endblock %}

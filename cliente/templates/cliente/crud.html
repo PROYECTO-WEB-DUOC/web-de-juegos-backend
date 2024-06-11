@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud clientes</title>
+</head>
+<body>
+    <h1>Clientes</h1>
+    <button type="button">AGREGAR
+       
+    </button>
+    <br>
+<table style="border: 1px solid black;">
+    {% if clientes %}
+    <th style="border: 1px solid black;">RUT</th>
+    <th style="border: 1px solid black;">NOMBRE</th>
+    <th style="border: 1px solid black;">APELLIDO</th>
+    <th style="border: 1px solid black;">GENERO</th>
+    <th style="border: 1px solid black;">EMAIL</th>
+    {% for cliente in clientes %}
+  <tr>
+    <td >{{cliente.rut}} </td>
+    <td>{{cliente.nombre}}
+    <td>{{cliente.apellido_paterno}}
+    <td>{{cliente.id_genero}} 
+    <td>{{cliente.email}}
+    <td><a href="">Eliminar</a></td>
+    <td> <a href="">Modificar</a></td>
+  </tr>
+    {% endfor %}
+{% endif %}
+
+</table>
+</body>
+</html>

@@ -5,12 +5,18 @@
 <link rel="stylesheet" href="{% static  'cliente/css/style.css'%}">
 {% endblock %}
 
+{% block js %}
+<script src="{% static 'cliente/js/script.js'%}"></script>
+    <script src="{% static 'cliente/js/cambio-fondo.js'%}"></script>
+    <script src="{% static 'cliente/js/api.js'%}"></script>
+{% endblock %}
+
 {% block contenido %}
 
+
+
       <section class="video" >
-          
-        
-          
+
           <video id="video" src="{% static 'cliente/videos/PS5Brand GameRangeFeel LATAM ES Video 16x9 30sec Digital.mp4'%}" autoplay muted loop ></video>
         
       </section>

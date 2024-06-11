@@ -1,0 +1,53 @@
+{% extends 'cliente/home.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static  'cliente/css/registro.css' %}">
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'cliente/js/api.js'%}"></script>
+{% endblock %}
+
+{% block contenido %}
+
+<script>type="text/javascript"</script>
+    <div class="form">
+        <div class="titulo">
+            <h1>Contacto</h1>
+        </div>
+        <hr>
+        <br>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Nombre</span>
+            <input type="text" class="form-control" placeholder="Ej: Maximiliano Duran" aria-label="Username" aria-describedby="basic-addon1">
+        
+          </div>
+        
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Correo</span>
+            <input type="text" class="form-control" placeholder="Ej: nico123" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+        </div>
+        
+        <label for="basic-url" class="form-label">Asunto</label>
+       
+        
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="" aria-label="Username">
+            
+            
+        </div>
+        
+        <div class="input-group">
+            <span class="input-group-text">Mensaje</span>
+            <textarea class="form-control" aria-label="With textarea"></textarea>
+        </div>
+        <button type="button" class="btn btn-success">Enviar</button>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    {% endblock %}

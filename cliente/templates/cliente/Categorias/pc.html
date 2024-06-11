@@ -1,0 +1,196 @@
+{% extends 'cliente/home.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static  'cliente/css/juegos.css'%}">
+{% endblock %}
+
+{% block js %}
+
+    <script src="{% static 'cliente/js/api.js'%}"></script>
+{% endblock %}
+
+{% block contenido %}
+
+
+<H1 class="titulo">JUEGOS PC</H1>
+<div class="juntar"> <!-- CARDS AL LADO DE Otra-->
+    <!-- CARD 1 -->
+    <div class="card mr-3" style="width: 18rem;">
+        <img loading="lazy" src="/img/ori1.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <p class="card-text">Ori and the Blind Forest</p>
+            <hr>
+            <p class="card-text">Puntuación: 8.8</p>
+        </div>
+         <!--Opcion comprar-->
+         <div class="option-shop">
+          <button type="button" class="btn btn-primary">Detalles</button>
+        </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card" style="width: 18rem;">
+        <img  loading="lazy" src="/img/oori2.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <p class="card-text">Ori and the Will of the Wisps</p>
+            <hr>
+            <p class="card-text">Puntuación: 9.4</p>
+        </div>
+         <!--Opcion comprar-->
+         <div class="option-shop">
+          <button type="button" class="btn btn-primary">Detalles</button>
+        </div>
+    </div>
+    <!-- CARD 3-->
+    
+    <div class="card" style="width: 18rem;">
+        <img loading="lazy" src="/img/lethal.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <p class="card-text">Lethal Company</p>
+            <hr>
+            <p class="card-text">Puntuación: 9.9</p>
+        </div>
+         <!--Opcion comprar-->
+         <div class="option-shop">
+          <button type="button" class="btn btn-primary">Detalles</button>
+        </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="card" style="width: 18rem;">
+      <img loading="lazy" src="/img/thewitcher.webp" class="card-img-top" alt="...">
+      <div class="card-body">
+          <p class="card-text">The Witcher 3: Wild Hunt</p>
+          <hr>
+          <p class="card-text">Puntuación: 9.5</p>
+      </div>
+      <!--Opcion comprar-->
+          <div class="option-shop">
+            <button type="button" class="btn btn-primary">Detalles</button>
+          </div>
+    </div>
+    
+  
+
+
+<!--segunda fila-->
+
+  <!-- CARD 1 -->
+  <div class="card mr-3" style="width: 18rem;">
+      <img loading="lazy" src="/img/silent-hill-silent-hill-2-wallpaper-preview.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+          <p class="card-text">Silent Hill 2</p>
+          <hr>
+          <p class="card-text">Puntuación: 9.3</p>
+      </div>
+       <!--Opcion comprar-->
+       <div class="option-shop">
+        <button type="button" class="btn btn-primary">Detalles</button>
+      </div>
+  </div>
+
+  <!-- CARD 2 -->
+  <div class="card" style="width: 18rem;">
+      <img loading="lazy" src="/img/wp7775348.webp" class="card-img-top" alt="...">
+      <div class="card-body">
+          <p class="card-text">Phasmophobia</p>
+          <hr>
+          <p class="card-text">Puntuación: 7.4</p>
+      </div>
+       <!--Opcion comprar-->
+       <div class="option-shop">
+        <button type="button" class="btn btn-primary">Detalles</button>
+      </div>
+  </div>
+  <!-- CARD 3-->
+  
+  <div class="card" style="width: 18rem;">
+      <img loading="lazy" src="/img/lies of p.jpeg" class="card-img-top" alt="...">
+      <div class="card-body">
+          <p class="card-text">Lies of P</p>
+          <hr>
+          <p class="card-text">Puntuación: 8</p>
+      </div>
+       <!--Opcion comprar-->
+       <div class="option-shop">
+        <button type="button" class="btn btn-primary">Detalles</button>
+      </div>
+  </div>
+
+  <!-- CARD 4 -->
+  <div class="card" style="width: 18rem;">
+    <img loading="lazy" src="/img/capsule_616x353.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+        <p class="card-text">Content Warning</p>
+        <hr>
+        <p class="card-text">Puntuación: 8.5</p>
+    </div>
+    <!--Opcion comprar-->
+        <div class="option-shop">
+          <button type="button" class="btn btn-primary">Detalles</button>
+        </div>
+  </div>
+  
+
+
+<!--tercera fila-->
+
+  <!-- CARD 1 -->
+  <div class="card mr-3" style="width: 18rem;">
+      <img loading="lazy" src="/img/demono.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+          <p class="card-text">Demonologist</p>
+          <hr>
+          <p class="card-text">Puntuación: 8.3</p>
+      </div>
+       <!--Opcion comprar-->
+       <div class="option-shop">
+        <button type="button" class="btn btn-primary">Detalles</button>
+      </div>
+  </div>
+
+  <!-- CARD 2 -->
+  <div class="card" style="width: 18rem;">
+      <img loading="lazy" src="/img/dark1.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+          <p class="card-text">Dark Souls Remastered</p>
+          <hr>
+          <p class="card-text">Puntuación: 9.0</p>
+      </div>
+       <!--Opcion comprar-->
+       <div class="option-shop">
+        <button type="button" class="btn btn-primary">Detalles</button>
+      </div>
+  </div>
+  <!-- CARD 3-->
+  
+  <div class="card" style="width: 18rem;">
+      <img  loading="lazy" src="/img/san andre4a.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+          <p class="card-text">Grand Theft Auto: San Andreas</p>
+          <hr>
+          <p class="card-text">Puntuación: 9.9</p>
+      </div>
+       <!--Opcion comprar-->
+       <div class="option-shop">
+        <button type="button" class="btn btn-primary">Detalles</button>
+      </div>
+  </div>
+
+  <!-- CARD 4 -->
+  <div class="card" style="width: 18rem;">
+    <img loading="lazy" src="/img/images (2).jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+        <p class="card-text">Grand Theft Auto IV</p>
+        <hr>
+        <p class="card-text">Puntuación: 9.4</p>
+    </div>
+    <!--Opcion comprar-->
+        <div class="option-shop">
+          <button type="button" class="btn btn-primary">Detalles</button>
+        </div>
+  </div>
+  
+
+</div>
+{% endblock %}

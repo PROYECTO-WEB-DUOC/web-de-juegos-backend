@@ -1,0 +1,146 @@
+body{
+    background: linear-gradient(rgb(40, 40, 40), rgb(56, 56, 56));;
+   }
+
+
+.form{
+    width: 50%;
+    margin: auto;
+    margin-top: 8%;
+    
+    border: 3px solid #ddd;
+    border-radius: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    background-color: white ;
+    font-family: monospace;
+  
+}
+
+.btn-success{
+    margin-top: 30px;
+    
+}
+
+#footer{
+    --bs-bg-opacity: 0;
+    
+}
+
+.btn-primary {
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+.btn{
+    color: white;
+    background-color: #0b5ed7;
+    border-color: #0b5ed7;
+}
+
+
+footer{
+    margin-top: 140px;
+}
+
+.titulo{
+    text-align: center;
+    margin-top: 10px;
+
+}
+
+.modal-backdrop {
+    --bs-backdrop-zindex: none;
+}
+
+@media only screen and (max-width: 760px) {
+    .bg-body-tertiary{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+  }
+  @media only screen and (max-width: 760px) {
+    .btn-primary{
+        margin-left: 0px;
+        
+    }
+  }
+  @media only screen and (max-width: 760px) {
+    .navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
+        flex-wrap: nowrap;
+        
+        
+    }
+  }
+
+  @media only screen and (max-width: 760px) {
+    .form{
+        height: 500px;
+        
+        margin: auto;
+        margin-top: 100px;
+        
+    }
+  }
+
+  html {
+    min-height: 100%;
+    position: relative;
+  }
+  body {
+    margin: 0;
+    margin-bottom: 40px;
+  }
+  footer {
+    
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10px;
+    color: #fff
+  }
+
+  .nav-item:hover{
+    background-color:#ebeef0;
+    
+    border-radius: 32px;
+    transition: .25s;
+  
+  }
+  
+  .nav-item:active{
+    border: 1px solid black;
+  }
+
+  
+.navbar-text{
+  color: #fff;
+  text-decoration-line: none;
+}
+b{
+  color: #fff;
+  
+}
+@media only screen and (max-width: 990px) {
+#iniciar{
+  margin-left: 0;
+  margin-top: 5px;
+}}
+
+.btn-primary{
+  margin-bottom: 5px;
+}
+
+#formulario{
+color: #fff;
+text-decoration-line: none;
+}
+.btn-outline-success {
+  margin-left:2px ;
+}
+.navbar-nav{
+ 
+  font-size: 20px;
+  font-weight: 500; 
+  
+}
