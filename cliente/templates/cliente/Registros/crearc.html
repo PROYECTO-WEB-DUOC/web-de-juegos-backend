@@ -14,9 +14,13 @@
 
 <div class="container">
         <h2 class="cuadrado">Registrarse</h2>
-        <form action=""  method="POST" enctype="multipart/form-data" class="registro-form">
+        <form action="crearc"  method="POST" enctype="multipart/form-data" class="registro-form">
             {% csrf_token %}
-            {{ form.as_table }}
+            
+            <label for="rut">Rut:</label>
+            <input type="text" id="rut" class="input" placeholder="Ingrese su rut aqui" name="rut" required>
+            <div id="mensaje0" class="errores"> Dame tu rut</div>
+
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" class="input" placeholder="Ingrese su nombre aqui" name="nombre" required>
             <div id="mensaje1" class="errores"> Dame tu nombre</div>
@@ -43,7 +47,7 @@
             <pre>Genero: <select name="genero" id="">
                
                     {% for genero in generos %}
-                    <option value="{{genero.id_genero}}">{{genero.genero}}</option>
+                    <option value="{{genero.idgenero}}">{{genero.genero}}</option>
                     {% endfor %}
                  
             </select></pre>
@@ -57,12 +61,20 @@
         var expr= /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         $(document).ready(function(){
             $('#enviar').click(function(){
+                var rut=$('#rut').val()
                 var nombre=$('#nombre').val()
                 var apellido=$('#apellido').val()
                 var correo=$('#correo').val()
                 var contraseña=$('#contraseña').val()
                 var contraseña2=$('#confirmar_contraseña').val()
                 
+                if(rut==""){
+                    $("#mensaje0").fadeIn();
+                    return false
+                }else{
+                    $("#mensaje0").fadeOut();
+                }
+
                 if(nombre==""){
                     $("#mensaje1").fadeIn();
                     return false

@@ -50,12 +50,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # O cualquier otro backend que estés utilizando
+
+
 ROOT_URLCONF = 'instituto.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates",],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +70,8 @@ TEMPLATES = [
         },
     },
 ]
+LOGIN_REDIRECT_URL='index'
+LOGOUT_REDIRECT_URL='login'
 
 WSGI_APPLICATION = 'instituto.wsgi.application'
 

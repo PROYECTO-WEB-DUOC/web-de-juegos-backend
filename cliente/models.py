@@ -7,13 +7,14 @@ class Cliente(models.Model):
     apellido_paterno = models.CharField(max_length=20)
     id_genero = models.ForeignKey('Genero',on_delete=models.CASCADE, db_column='idGenero')
     email = models.EmailField(unique=True, max_length=100, blank=True, null=True)
-    
+    contraseña=models.CharField(max_length=10, null=False)
+
     def __str__(self):
         return str(self.nombre)+" "+str(self.apellido_paterno)
     
 
 class Genero(models.Model):
-    id_genero = models.AutoField(db_column='idGenero', primary_key=True)
+    idgenero = models.CharField(primary_key=True,max_length=10)
     genero = models.CharField(max_length=20, blank=False, null=False)
     def __str__(self):
         return str(self.genero)

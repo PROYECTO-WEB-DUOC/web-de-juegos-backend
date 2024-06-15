@@ -7,10 +7,8 @@
 </head>
 <body>
     <h1>Clientes</h1>
-    <button type="button">AGREGAR
-    
-    </button>
-    <br>
+  
+
 <table style="border: 1px solid black;">
     {% if clientes %}
     <th style="border: 1px solid black;">RUT</th>
@@ -18,45 +16,42 @@
     <th style="border: 1px solid black;">APELLIDO</th>
     <th style="border: 1px solid black;">GENERO</th>
     <th style="border: 1px solid black;">EMAIL</th>
+    <th style="border: 1px solid black;">contraeña</th>
     {% for cliente in clientes %}
   <tr>
-    <td >{{cliente.rut}} </td>
-    <td>{{cliente.nombre}}
-    <td>{{cliente.apellido_paterno}}
-    <td>{{cliente.id_genero}} 
-    <td>{{cliente.email}}
-    <td><a href="">Eliminar</a></td>
-    <td> <a href="">Modificar</a></td>
+    <td id="rut">{{cliente.rut}}</td>
+    <td id="nombre">{{cliente.nombre}}
+    <td id="apellido">{{cliente.apellido_paterno}}
+    <td id="genero">{{cliente.id_genero}} 
+    <td id="email">{{cliente.email}}
+      <td id="contraseña">{{cliente.contraseña}} </td>
+      <td> <a href="{% url 'crearc' %}">Agregar</a></td>
+    <td><a href="{% url 'clientes_del' pk=cliente.rut %}">Eliminar</a></td>
+    <td> <a id="btn" href="{% url 'clientes_edit' pk=cliente.rut %}">Modificar</a></td>
   </tr>
     {% endfor %}
+    
 {% endif %}
 
 
+{% if cliente %}
+
+  <h2>Modificar Clientes</h2>
+
+  <form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_table }}
+
+    
+    <input style="position: relative; top: 190px; left: 50px;" type="submit" name="opcion" value="Actualizar">
+  </form>
+  <a style="position: relative; top: 190px; left: 100px;" href="{% url 'crud'%}">Volver</a>
+  {% endif %}
 
 
 
+ 
 
-</table>
 
-<h1>generos</h1>       
-<table style="border: 1px solid black;">
-  {% if generos %}
-  <th style="border: 1px solid black;">RUT</th>
-  <th style="border: 1px solid black;">NOMBRE</th>
-  <th style="border: 1px solid black;">APELLIDO</th>
-  <th style="border: 1px solid black;">GENERO</th>
-  <th style="border: 1px solid black;">EMAIL</th>
-  {% for genero in generos %}
-<tr>
-  <td >{{genero.genero}} </td>
-  <td>{{genero.id_genero}}
-  
-  <td><a href="">Eliminar</a></td>
-  <td> <a href="">Modificar</a></td>
-</tr>
-  {% endfor %}
-  {% else %}
-  <h1>no hay</h1>
-{% endif %}
 </body>
 </html>

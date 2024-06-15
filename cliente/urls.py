@@ -6,7 +6,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('index',views.index, name='index'),
     path('crud', views.crud, name='crud'),
-    
+    path('clientes_del/<str:pk>', views.clientes_del, name='clientes_del'),
+    path('clientes_edit/<str:pk>', views.clientes_edit, name='clientes_edit'),
     path('gow',views.gow, name='gow'),
     path('spider',views.spider, name='spider'),
     path('bloodborne',views.bloodborne, name='bloodborne'),
@@ -16,7 +17,8 @@ urlpatterns = [
     path('pc',views.pc, name='pc'),
     path('crearc',views.crearc, name='crearc'),
     path('registro',views.registro, name='registro'),
-]
+    
+]   
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
