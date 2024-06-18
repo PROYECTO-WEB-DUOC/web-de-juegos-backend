@@ -18,3 +18,35 @@ class Genero(models.Model):
     genero = models.CharField(max_length=20, blank=False, null=False)
     def __str__(self):
         return str(self.genero)
+
+
+class Juegos_Pc(models.Model):
+    idjuego=models.AutoField(primary_key=True)
+    nombre=models.CharField(max_length=100)
+    puntuacion=models.CharField(max_length=2)
+    precio=models.CharField(max_length=20)
+    imagen=models.ImageField( upload_to="cliente", null=False)
+
+    def __str__(self):
+        return str(self.nombre)
+
+
+class Juegos_Ps5(models.Model):
+    idjuego=models.AutoField(primary_key=True)
+    nombre=models.CharField(max_length=100)
+    puntuacion=models.CharField(max_length=2)
+    precio=models.CharField(max_length=20)
+    imagen=models.ImageField( upload_to="cliente", null=False)
+
+    def __str__(self):
+        return str(self.nombre)
+
+class Juegos_Ps4(models.Model):
+    idjuego=models.AutoField(primary_key=True)
+    nombre=models.CharField(max_length=100)
+    puntuacion=models.CharField(max_length=2)
+    precio=models.CharField(max_length=20)
+    imagen=models.ImageField( upload_to="cliente", null=False)
+
+    def __str__(self):
+        return str(self.nombre)

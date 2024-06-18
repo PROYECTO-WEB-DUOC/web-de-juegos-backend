@@ -189,8 +189,22 @@
         <div class="option-shop">
           <button type="button" class="btn btn-primary">Detalles</button>
         </div>
-  
-  
+    </div>   
+     <!-- card models -->
+{% for juego_ps5 in juegos_ps5s %}
+<div class="card mr-3" style="width: 18rem;">
+    <img loading="lazy" src="{{juego_ps5.imagen.url}} " class="card-img-top" alt="...">
+    <div class="card-body">
+        <p class="card-text">{{juego_ps5.nombre}}</p>
+        <hr>
+        <p class="card-text">{{juego_ps5.puntuacion}}</p>
+    </div>
+    <!--Opcion comprar-->
+    <div class="option-shop">
+        <button type="button" class="btn btn-primary">Detalles</button>
+    </div>
+</div>
+{% endfor %} 
 
 </div>
 {% endblock %}

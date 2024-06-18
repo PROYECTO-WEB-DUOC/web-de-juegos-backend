@@ -187,7 +187,20 @@
           <button type="button" class="btn btn-primary">Detalles</button>
         </div>
   </div>
-  
+  {% for juego_ps4 in juegos_ps4s %}
+  <div class="card mr-3" style="width: 18rem;">
+      <img loading="lazy" src="{{juego_ps4.imagen.url}} " class="card-img-top" alt="...">
+      <div class="card-body">
+          <p class="card-text">{{juego_ps4.nombre}}</p>
+          <hr>
+          <p class="card-text">{{juego_ps4.puntuacion}}</p>
+      </div>
+      <!--Opcion comprar-->
+      <div class="option-shop">
+          <button type="button" class="btn btn-primary">Detalles</button>
+      </div>
+  </div>
+  {% endfor %}  
 
 </div>
 {% endblock %}

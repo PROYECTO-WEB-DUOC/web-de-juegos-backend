@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import  Cliente,Genero
+from .models import  Cliente,Genero,Juegos_Pc,Juegos_Ps5,Juegos_Ps4
 from .forms import ClienteForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -30,15 +30,18 @@ def dmc(request):
     return render(request, 'cliente/Juegos/dmc.html', context)
 
 def ps5(request):
-    context={}
+    juegos_ps5s=Juegos_Ps5.objects.all()
+    context={'juegos_ps5s':juegos_ps5s}
     return render(request, 'cliente/Categorias/ps5.html', context)
 
 def ps4(request):
-    context={}
+    juegos_ps4s=Juegos_Ps4.objects.all()
+    context={'juegos_ps4s':juegos_ps4s}
     return render(request, 'cliente/Categorias/ps4.html', context)
 
 def pc(request):
-    context={}
+    juegos_pcs=Juegos_Pc.objects.all()
+    context={'juegos_pcs':juegos_pcs}
     return render(request, 'cliente/Categorias/pc.html', context)
 
 def crearc(request):
@@ -69,50 +72,7 @@ def registro(request):
     context={}
     return render(request, 'cliente/Registros/registro.html', context)
 
-def clientes_del(request,pk):
-    context={}
-    try:
-        cliente=Cliente.objects.get(rut=pk)
-        cliente.delete()
 
-        mensaje="datos eliminados"
-        clientes=Cliente.objects.all()
-        context={'clientes': clientes, 'mensaje':mensaje}
-        return render(request,'cliente/crud.html',context)
-
-    except:
-        mensaje="rut no encontrado"
-        clientes=Cliente.objects.all()
-        context={'clientes': clientes, 'mensaje':mensaje}
-        return render(request,'cliente/crud.html',context)
-
-
-def clientes_edit(request,pk):
-    try:
-        #obtenemos los ruts de los clientes
-        cliente=Cliente.objects.get(rut=pk)
-        context={}
-        if cliente:
-            #evaluamos si es post
-            if request.method =="POST":
-                form=ClienteForm(request.POST,instance=cliente)
-                form.save()
-                mensaje='DATOS ACTUALIZADOS'
-                
-                context={'cliente':cliente,'form':form,'mensaje':mensaje}
-                return render(request,'cliente/crud.html',context)
-            else:
-                #no es un post
-                 
-                 form=ClienteForm(instance=cliente)
-                 context={'cliente':cliente,'form':form}
-                 return render(request,'cliente/crud.html',context)
-    except:
-        print("rut no existe")
-        clientes=Cliente.objects.all()
-        
-        context={'clientes':clientes}
-        return render(request,'cliente/crud.html',context)
 
 
 def index(request):
@@ -120,3 +80,6 @@ def index(request):
     usuario=request.session["usuario"]
     context={'usuario':usuario}
     return render(request, 'cliente/index.html', context)
+
+
+
