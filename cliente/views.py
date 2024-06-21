@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import  Cliente,Genero,Juegos_Pc,Juegos_Ps5,Juegos_Ps4
+from .models import  Cliente,Genero,Juegos
 from .forms import ClienteForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -31,18 +31,18 @@ def dmc(request):
     return render(request, 'cliente/Juegos/dmc.html', context)
 
 def ps5(request):
-    juegos_ps5s=Juegos_Ps5.objects.all()
-    context={'juegos_ps5s':juegos_ps5s}
+    juegoss=Juegos.objects.all()
+    context={'juegoss':juegoss}
     return render(request, 'cliente/Categorias/ps5.html', context)
 
 def ps4(request):
-    juegos_ps4s=Juegos_Ps4.objects.all()
-    context={'juegos_ps4s':juegos_ps4s}
+    juegoss=Juegos.objects.all()
+    context={'juegoss':juegoss}
     return render(request, 'cliente/Categorias/ps4.html', context)
 
 def pc(request):
-    juegos_pcs=Juegos_Pc.objects.all()
-    context={'juegos_pcs':juegos_pcs}
+    juegoss=Juegos.objects.all()
+    context={'juegoss':juegoss}
     return render(request, 'cliente/Categorias/pc.html', context)
 
 def crearc(request):

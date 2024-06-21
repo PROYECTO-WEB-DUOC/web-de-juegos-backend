@@ -1,13 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
+{% extends 'cliente/home.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static  'cliente/css/style.css'%}">
+{% endblock %}
 
+{% block js %}
+<script src="{% static 'cliente/js/script.js'%}"></script>
+<script src="{% static 'cliente/js/cambio-fondo.js'%}"></script>
+<script src="{% static 'cliente/js/api.js'%}"></script>
+
+{% endblock %}
+
+    
+{% block contenido %}
     <h1>login</h1>
 
     <form action="" method="post">
@@ -15,5 +20,6 @@
         {{ form.as_p}}
         <button type="submit"> iniciar sesion</button>
     </form>
-</body>
-</html>
+    
+    <script type="module" src="{% static 'cliente/js/3d.js' %}"></script>
+{% endblock %}

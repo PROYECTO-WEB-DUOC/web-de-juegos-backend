@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from cliente.models import  Cliente,Juegos_Pc,Juegos_Ps5,Juegos_Ps4
-from cliente.forms import ClienteForm,Juegos_Pc_Form, Juegos_Ps5_Form,Juegos_Ps4_Form
+from cliente.models import  Cliente,Juegos
+from cliente.forms import ClienteForm,Juegos_Form
 # Create your views here.
 def admin(request):
     context={}
@@ -269,3 +269,73 @@ def juegos_ps4_edit(request,pk):
         juegos_ps4=Juegos_Ps4.objects.all()
         context={'juegos_ps4':juegos_ps4, 'mensaje':mensaje}
         return render(request,'administrador/crud_juegos_ps4.html',context)
+
+#crus juegos general
+def crud_juegos(request):
+    juegos=Juegos.objects.all()
+    context={'juegos':juegos}
+    return render(request, 'administrador/crud_juegos.html', context)
+
+
+
+def juegos_add(request):
+    context={}
+    if request.method == "POST": 
+        form=Juegos_Form(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            form=Juegos_Form()
+            mensaje="datos guardados"
+            context={'mensaje':mensaje,'form':form}
+            return render(request,'administrador/crud_juegos.html',context)  
+    else:
+        
+        form=Juegos_Form()
+        context={'form':form}
+        return render(request,'administrador/crud_juegos.html',context)
+
+def juegos_del(request,pk):
+    context={}
+    
+    try:
+        juegos=Juegos.objects.get(idjuego=pk)
+        if juegos:
+            juegos.delete()
+
+            mensaje="datos eliminados"
+            
+            context={'juegos': juegos, 'mensaje':mensaje}
+        return render(request,'administrador/crud_juegos.html',context)
+        
+    except:
+        mensaje="rut no encontrado"
+        juegos=Juegos.objects.all()
+        context={'juegos': juegos, 'mensaje':mensaje}
+        return render(request,'administrador/crud_juegos.html',context)
+
+
+def juegos_edit(request,pk):
+    try:
+        #obtenemos los ids de los juegos de pc
+        juegos=Juegos.objects.get(idjuego = pk)
+        context={'form' : Juegos_Form(instance=juegos)}
+        if juegos:
+            print("encontro")
+            #evaluamos si es post
+            if request.method == 'POST': 
+                print("es un post")
+                formulario=Juegos_Form(request.POST,request.FILES, instance=juegos)
+                if formulario.is_valid:
+                    formulario.save()
+                    print("datos actualizados")
+                    mensaje='DATOS ACTUALIZADOS'
+                    
+                    context={'mensaje':mensaje}
+            
+
+        return render(request,'administrador/crud_juegos.html',context)
+    except:
+        mensaje="id no encontrado"
+        juegos=Juegos.objects.all()
+        context={'juegos':juegos, 'mensaje':mensaje}
+        return render(request,'administrador/crud_juegos.html',context)

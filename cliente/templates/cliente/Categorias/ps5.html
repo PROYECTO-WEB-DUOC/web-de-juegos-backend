@@ -15,196 +15,26 @@
 <H1 class="titulo">JUEGOS PS5</H1>
 <div class="juntar"> <!-- CARDS AL LADO DE Otra-->
     <!-- CARD 1 -->
+   
+     <!-- card models --> 
+
+{% for juegos in juegoss %}
+    {%if juegos.id_categoria.idcategoria == '1' %}
     <div class="card mr-3" style="width: 18rem;">
-        <img  src="/img/grand-theft-auto-v-naej4yiap4gnxh2o.jpg" class="card-img-top" alt="...">
+        <img loading="lazy" src="{{juegos.imagen.url}} " class="card-img-top" alt="...">
         <div class="card-body">
-            <p class="card-text">Grand Theft Auto 5</p>
+            <p class="card-text">{{juegos.nombre}}</p>
             <hr>
-            <p class="card-text">Puntuación: 8.5</p>
+            <p class="card-text">{{juegos.puntuacion}}</p>
         </div>
-         <!--Opcion comprar-->
-         <div class="option-shop">
-          <button type="button" class="btn btn-primary">Detalles</button>
-        </div>
-    </div>
-
-    <!-- CARD 2 -->
-    <div class="card" style="width: 18rem;">
-        <img  src="/img/re7.jpeg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <p class="card-text">Resident Evil 7</p>
-            <hr>
-            <p class="card-text">Puntuación: 8.0</p>
-        </div>
-         <!--Opcion comprar-->
-         <div class="option-shop">
-          <button type="button" class="btn btn-primary">Detalles</button>
-        </div>
-    </div>
-    <!-- CARD 3-->
-    
-    <div class="card" style="width: 18rem;">
-        <img  src="/img/re8.png" class="card-img-top" alt="...">
-        <div class="card-body">
-            <p class="card-text">Resident Evil 8 - Village</p>
-            <hr>
-            <p class="card-text">Puntuación: 9.0</p>
-        </div>
-         <!--Opcion comprar-->
-         <div class="option-shop">
-          <button type="button" class="btn btn-primary">Detalles</button>
-        </div>
-    </div>
-
-    <!-- CARD 4 -->
-    <div class="card" style="width: 18rem;">
-      <img loading="lazy" src="/img/red_dead_redemption_2___wallpaper_v_2_by_3demerzel_ddhljyu-fullview.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-          <p class="card-text">Red Dead Redemption 2</p>
-          <hr>
-          <p class="card-text">Puntuación: 9.3</p>
-      </div>
-      <!--Opcion comprar-->
-          <div class="option-shop">
+        <!--Opcion comprar-->
+        <div class="option-shop">
             <button type="button" class="btn btn-primary">Detalles</button>
-          </div>
+        </div>
     </div>
     
-  
-
-
-<!--segunda fila-->
-
-  <!-- CARD 1 -->
-  <div class="card mr-3" style="width: 18rem;">
-      <img loading="lazy" src="/img/cyber33.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-          <p class="card-text">Cyberpunk 2077</p>
-          <hr>
-          <p class="card-text">Puntuación: 9.3</p>
-      </div>
-       <!--Opcion comprar-->
-       <div class="option-shop">
-        <button type="button" class="btn btn-primary">Detalles</button>
-      </div>
-  </div>
-
-  <!-- CARD 2 -->
-  <div class="card" style="width: 18rem;">
-      <img loading="lazy" src="/img/ffviir-zoom-cloud-shinra.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-          <p class="card-text">Final Fantasy VII Remake</p>
-          <hr>
-          <p class="card-text">Puntuación: 9.0</p>
-      </div>
-       <!--Opcion comprar-->
-       <div class="option-shop">
-        <button type="button" class="btn btn-primary">Detalles</button>
-      </div>
-  </div>
-  <!-- CARD 3-->
-  
-  <div class="card" style="width: 18rem;">
-      <img loading="lazy" src="/img/helld.webp" class="card-img-top" alt="...">
-      <div class="card-body">
-          <p class="card-text">Helldivers 2</p>
-          <hr>
-          <p class="card-text">Puntuación: 8.5</p>
-      </div>
-       <!--Opcion comprar-->
-       <div class="option-shop">
-        <button type="button" class="btn btn-primary">Detalles</button>
-      </div>
-  </div>
-
-  <!-- CARD 4 -->
-  <div class="card" style="width: 18rem;">
-    <img loading="lazy" src="/img/1355897.jpeg" class="card-img-top" alt="...">
-    <div class="card-body">
-        <p class="card-text">Ghost of Tsushima</p>
-        <hr>
-        <p class="card-text">Puntuación: 8.0</p>
-    </div>
-    <!--Opcion comprar-->
-        <div class="option-shop">
-          <button type="button" class="btn btn-primary">Detalles</button>
-        </div>
-  </div>
-  
-
-
-<!--tercera fila-->
-
-  <!-- CARD 1 -->
-  <div class="card mr-3" style="width: 18rem;">
-      <img loading="lazy" src="/img/it-takes-two-l2xz4tkaq1d4na24.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-          <p class="card-text">It Takes Two</p>
-          <hr>
-          <p class="card-text">Puntuación: 8.6</p>
-      </div>
-       <!--Opcion comprar-->
-       <div class="option-shop">
-        <button type="button" class="btn btn-primary">Detalles</button>
-      </div>
-  </div>
-
-  <!-- CARD 2 -->
-  <div class="card" style="width: 18rem;">
-      <img loading="lazy" src="/img/fifa24.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-          <p class="card-text">EA Sports FC 24</p>
-          <hr>
-          <p class="card-text">Puntuación: 7.8</p>
-      </div>
-       <!--Opcion comprar-->
-       <div class="option-shop">
-        <button type="button" class="btn btn-primary">Detalles</button>
-      </div>
-  </div>
-  <!-- CARD 3-->
-  
-  <div class="card" style="width: 18rem;">
-      <img loading="lazy" src="/img/hogwarts-legacy-key-art_1.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-          <p class="card-text">Hogwarts Legacy</p>
-          <hr>
-          <p class="card-text">Puntuación: 8.2</p>
-      </div>
-       <!--Opcion comprar-->
-       <div class="option-shop">
-        <button type="button" class="btn btn-primary">Detalles</button>
-      </div>
-  </div>
-
-  <!-- CARD 4 -->
-  <div class="card" style="width: 18rem;">
-    <img loading="lazy" src="/img/horizon-forbidden-west-ps4-ps5-wallpapers-06.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-        <p class="card-text">Horizon Forbidden West</p>
-        <hr>
-        <p class="card-text">Puntuación: 9.4</p>
-    </div>
-    <!--Opcion comprar-->
-        <div class="option-shop">
-          <button type="button" class="btn btn-primary">Detalles</button>
-        </div>
-    </div>   
-     <!-- card models -->
-{% for juego_ps5 in juegos_ps5s %}
-<div class="card mr-3" style="width: 18rem;">
-    <img loading="lazy" src="{{juego_ps5.imagen.url}} " class="card-img-top" alt="...">
-    <div class="card-body">
-        <p class="card-text">{{juego_ps5.nombre}}</p>
-        <hr>
-        <p class="card-text">{{juego_ps5.puntuacion}}</p>
-    </div>
-    <!--Opcion comprar-->
-    <div class="option-shop">
-        <button type="button" class="btn btn-primary">Detalles</button>
-    </div>
-</div>
-{% endfor %} 
+    {% endif %}
+{% endfor%}
 
 </div>
 {% endblock %}

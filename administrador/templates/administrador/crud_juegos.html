@@ -7,34 +7,35 @@
 </head>
 <body>
     <button><a href="{% url 'admin' %}"> volver</a></button>
-    <h1>Juegos Ps4</h1>
+    <h1>Juegos </h1>
   
-    <button><a href="{% url 'juegos_ps4_add' %}">Agregar</a></button>
+    <button><a href="{% url 'juegos_add' %}">Agregar</a></button>
     <table style="border: 1px solid black;">
-        {% if juegos_ps4 %}
+        {% if juegos %}
         <th style="border: 1px solid black;">id</th>
         <th style="border: 1px solid black;">NOMBRE</th>
         <th style="border: 1px solid black;">puntuacion</th>
         <th style="border: 1px solid black;">imagen</th>
         <th style="border: 1px solid black;">precio</th>
-        
-        {% for juegos_ps4s in juegos_ps4 %}
+        <th style="border: 1px solid black;">Categoria</th>
+        {% for juegoss in juegos %}
       <tr>
-        <td id="nombre">{{juegos_ps4s.idjuego}}
-        <td id="nombre">{{juegos_ps4s.nombre}}
-        <td id="puntuacion">{{juegos_ps4s.puntuacion}}
-        <td id="imagen"><img src="{{juegos_ps4s.imagen.url}}" style="width: 30px;"  alt=""> 
-        <td id="precio">{{juegos_ps4s.precio}}
+        <td id="nombre">{{juegoss.idjuego}}
+        <td id="nombre">{{juegoss.nombre}}
+        <td id="puntuacion">{{juegoss.puntuacion}}
+        <td id="imagen"><img src="{{juegoss.imagen.url}}" style="width: 30px;"  alt=""> 
+        <td id="precio">{{juegoss.precio}}
+            <td id="categoria">{{juegoss.id_categoria}}
        
-        <td><a href="{% url 'juegos_ps4_del' pk=juegos_ps4s.idjuego %}">Eliminar</a></td>
-        <td><a href="{% url 'juegos_ps4_edit' pk=juegos_ps4s.idjuego %}">Modificar</a></td>
+        <td><a href="{% url 'juegos_del' pk=juegoss.idjuego %}">Eliminar</a></td>
+        <td><a href="{% url 'juegos_edit' pk=juegoss.idjuego %}">Modificar</a></td>
       </tr>
         {% endfor %}
         
     {% endif %}
     
     <!--modificar juego pc-->
-{% if juegos_pc_edit %}
+{% if juegos_edit %}
     <form action="" method="POST" enctype="multipart/form-data" >
         {% csrf_token %}
         {{ form.as_table }}
@@ -50,9 +51,9 @@
 <form action="" method="POST"  enctype="multipart/form-data" >
         {% csrf_token %}
         {{ form.as_table }}
-        <input style="position: relative; top: 190px; left: 40px;" type="submit" name="opcion" value="Agregar">
+        <input style="position: relative; top: 190px; left: 50px;" type="submit" name="opcion" value="Agregar">
 </form>
-<a style="position: relative; top: 190px; left: 100px;" href="{% url 'crud_juegos_ps4' %}">Volver</a>
+<a style="position: relative; top: 190px; left: 100px;" href="{% url 'crud_juegos' %}">Volver</a>
  
 </body>
 </html>

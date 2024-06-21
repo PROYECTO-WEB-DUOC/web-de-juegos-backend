@@ -13,194 +13,23 @@
 
 <H1 class="titulo">JUEGOS PS4</H1>
 <div class="juntar"> <!-- CARDS AL LADO DE Otra-->
-    <!-- CARD 1 -->
+    {% for juegos in juegoss %}
+    {%if juegos.id_categoria.idcategoria == '2' %}
     <div class="card mr-3" style="width: 18rem;">
-        <img loading="lazy" src="/img/bloodborne-5k-2880x1800-13122.png" class="card-img-top" alt="...">
+        <img loading="lazy" src="{{juegos.imagen.url}} " class="card-img-top" alt="...">
         <div class="card-body">
-            <p class="card-text">Bloodborne</p>
+            <p class="card-text">{{juegos.nombre}}</p>
             <hr>
-            <p class="card-text">Puntuación: 9.4</p>
+            <p class="card-text">{{juegos.puntuacion}}</p>
         </div>
-         <!--Opcion comprar-->
-         <div class="option-shop">
-          <button type="button" class="btn btn-primary">Detalles</button>
-        </div>
-    </div>
-
-    <!-- CARD 2 -->
-    <div class="card" style="width: 18rem;">
-        <img loading="lazy" src="/img/cyber33.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <p class="card-text">Cyberpunk 2077</p>
-            <hr>
-            <p class="card-text">Puntuación: 9.3</p>
-        </div>
-         <!--Opcion comprar-->
-         <div class="option-shop">
-          <button type="button" class="btn btn-primary">Detalles</button>
-        </div>
-    </div>
-    <!-- CARD 3-->
-    
-    <div class="card" style="width: 18rem;">
-        <img loading="lazy" src="/img/re7.jpeg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <p class="card-text">Resident Evil 7</p>
-            <hr>
-            <p class="card-text">Puntuación: 8.0</p>
-        </div>
-         <!--Opcion comprar-->
-         <div class="option-shop">
-          <button type="button" class="btn btn-primary">Detalles</button>
-        </div>
-    </div>
-
-    <!-- CARD 4 -->
-    <div class="card" style="width: 18rem;">
-      <img loading="lazy" src="/img/re8.png" class="card-img-top" alt="...">
-      <div class="card-body">
-          <p class="card-text">Resident Evil 8 - Village</p>
-          <hr>
-          <p class="card-text">Puntuación: 9.0</p>
-      </div>
-      <!--Opcion comprar-->
-          <div class="option-shop">
+        <!--Opcion comprar-->
+        <div class="option-shop">
             <button type="button" class="btn btn-primary">Detalles</button>
-          </div>
-    </div>
-
-
-<!--segunda fila-->
-
-  <!-- CARD 1 -->
-  <div class="card mr-3" style="width: 18rem;">
-      <img loading="lazy" src="/img/elden-ring-thumb.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-          <p class="card-text">Elden Ring</p>
-          <hr>
-          <p class="card-text">Puntuación: 10</p>
-      </div>
-       <!--Opcion comprar-->
-       <div class="option-shop">
-        <button type="button" class="btn btn-primary">Detalles</button>
-      </div>
-  </div>
-
-  <!-- CARD 2 -->
-  <div class="card" style="width: 18rem;">
-      <img loading="lazy" src="/img/dmc.webp" class="card-img-top" alt="...">
-      <div class="card-body">
-          <p class="card-text">Devil May Cry 5</p>
-          <hr>
-          <p class="card-text">Puntuación: 8.5</p>
-      </div>
-       <!--Opcion comprar-->
-       <div class="option-shop">
-        <button type="button" class="btn btn-primary">Detalles</button>
-      </div>
-  </div>
-  <!-- CARD 3-->
-  
-  <div class="card" style="width: 18rem;">
-      <img loading="lazy" src="/img/hogwarts-legacy-key-art_1.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-          <p class="card-text">Hogwarts Legacy</p>
-          <hr>
-          <p class="card-text">Puntuación: 8.0</p>
-      </div>
-       <!--Opcion comprar-->
-       <div class="option-shop">
-        <button type="button" class="btn btn-primary">Detalles</button>
-      </div>
-  </div>
-
-  <!-- CARD 4 -->
-  <div class="card" style="width: 18rem;">
-    <img loading="lazy" src="/img/ds3_game-thumbnail.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-        <p class="card-text">Dark Souls III</p>
-        <hr>
-        <p class="card-text">Puntuación: 9.5</p>
-    </div>
-    <!--Opcion comprar-->
-        <div class="option-shop">
-          <button type="button" class="btn btn-primary">Detalles</button>
         </div>
-  </div>
-  
-
-
-<!--tercera fila-->
-
-  <!-- CARD 1 -->
-  <div class="card mr-3" style="width: 18rem;">
-      <img  loading="lazy" src="/img/it-takes-two-l2xz4tkaq1d4na24.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-          <p class="card-text">It Takes Two</p>
-          <hr>
-          <p class="card-text">Puntuación: 8.6</p>
-      </div>
-       <!--Opcion comprar-->
-       <div class="option-shop">
-        <button type="button" class="btn btn-primary">Detalles</button>
-      </div>
-  </div>
-
-  <!-- CARD 2 -->
-  <div class="card" style="width: 18rem;">
-      <img loading="lazy" src="/img/thee.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-          <p class="card-text">The Last of Us Remasterizado</p>
-          <hr>
-          <p class="card-text">Puntuación: 9.5</p>
-      </div>
-       <!--Opcion comprar-->
-       <div class="option-shop">
-        <button type="button" class="btn btn-primary">Detalles</button>
-      </div>
-  </div>
-  <!-- CARD 3-->
-  
-  <div class="card" style="width: 18rem;">
-      <img loading="lazy" src="/img/stray.webp" class="card-img-top" alt="...">
-      <div class="card-body">
-          <p class="card-text">Stray</p>
-          <hr>
-          <p class="card-text">Puntuación: 7.4</p>
-      </div>
-       <!--Opcion comprar-->
-       <div class="option-shop">
-        <button type="button" class="btn btn-primary">Detalles</button>
-      </div>
-  </div>
-
-  <!-- CARD 4 -->
-  <div class="card" style="width: 18rem;">
-    <img loading="lazy" src="/img/God-of-War®-III-Remastered_20150707215919.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-        <p class="card-text">God of War III -Remasterizado</p>
-        <hr>
-        <p class="card-text">Puntuación: 8.0</p>
     </div>
-    <!--Opcion comprar-->
-        <div class="option-shop">
-          <button type="button" class="btn btn-primary">Detalles</button>
-        </div>
-  </div>
-  {% for juego_ps4 in juegos_ps4s %}
-  <div class="card mr-3" style="width: 18rem;">
-      <img loading="lazy" src="{{juego_ps4.imagen.url}} " class="card-img-top" alt="...">
-      <div class="card-body">
-          <p class="card-text">{{juego_ps4.nombre}}</p>
-          <hr>
-          <p class="card-text">{{juego_ps4.puntuacion}}</p>
-      </div>
-      <!--Opcion comprar-->
-      <div class="option-shop">
-          <button type="button" class="btn btn-primary">Detalles</button>
-      </div>
-  </div>
-  {% endfor %}  
+    
+    {% endif %}
+{% endfor%}
 
 </div>
 {% endblock %}
