@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import  Cliente,Genero,Juegos_Pc,Juegos_Ps5,Juegos_Ps4
 from .forms import ClienteForm
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -67,19 +68,20 @@ def crearc(request):
                                     contraseña=contraseña)
         obj.save()
         context={"mensaje": "Datos grabados"}
+        user = User.objects.create_user(
+                    username=email,
+                    email=email,
+                    password=contraseña,
+                    first_name=nombre,
+                    last_name=apellido_paterno
+                )
+        user.save()
         return render(request,'cliente/Registros/crearc.html', context)
 def registro(request):
     context={}
     return render(request, 'cliente/Registros/registro.html', context)
 
 
-
-
-def index(request):
-    request.session["usuario"]="maxi"
-    usuario=request.session["usuario"]
-    context={'usuario':usuario}
-    return render(request, 'cliente/index.html', context)
 
 
 
