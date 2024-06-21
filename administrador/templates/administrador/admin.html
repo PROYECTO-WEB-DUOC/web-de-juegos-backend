@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Opciones</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static  'css/admini.css'%}">
 </head>
 <body>
     
-    <a href="{%url 'crud'%}" > crud clientes</a>
-    <a href="{% url 'crud_juegos_pc'%}"> crud juegos pc</a>
-    <a href="{% url 'crud_juegos_ps5'%}"> crud juegos ps5</a>
-    <a href="{% url 'crud_juegos_ps4'%}"> crud juegos ps4</a>
+    <a class="crudcli" href="{%url 'crud'%}" > crud clientes</a>
+    <a class="crudpc" href="{% url 'crud_juegos_pc'%}"> crud juegos pc</a>
+    <a class="crudps5" href="{% url 'crud_juegos_ps5'%}"> crud juegos ps5</a>
+    <a class="crudps4" href="{% url 'crud_juegos_ps4'%}"> crud juegos ps4</a>
 </body>
 </html>

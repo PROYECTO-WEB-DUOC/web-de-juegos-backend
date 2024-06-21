@@ -7,7 +7,28 @@
 </head>
 <body>
     
-
+    {% extends 'cliente/home.html' %}
+    {% load static %}
+    {% block css %}
+    <link rel="stylesheet" href="{% static  'cliente/css/style.css'%}">
+    {% endblock %}
+    
+    {% block js %}
+    <script src="{% static 'cliente/js/script.js'%}"></script>
+        <script src="{% static 'cliente/js/cambio-fondo.js'%}"></script>
+        <script src="{% static 'cliente/js/api.js'%}"></script>
+    {% endblock %}
+    
+    
+    {% block contenido %}
+        <h1>login</h1>
+    
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p}}
+            <button type="submit"> iniciar sesion</button>
+        </form>
+    {% endblock %}
     <h1>login</h1>
 
     <form action="" method="post">
