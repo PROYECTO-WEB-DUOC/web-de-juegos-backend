@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.models import User
 from cliente.models import  Cliente,Juegos_Pc,Juegos_Ps5,Juegos_Ps4
 from cliente.forms import ClienteForm,Juegos_Pc_Form, Juegos_Ps5_Form,Juegos_Ps4_Form
 # Create your views here.
@@ -12,30 +13,6 @@ def crud(request):
     return render(request, 'administrador/crud.html', context)
 
 #crud clientes
-def crearc(request):
-    if request.method != "POST":
-        generos=Genero.objects.all()
-        context={'generos':generos}
-        return render(request, 'cliente/Registros/crearc.html', context)
-    else:
-        #es un post por lo tanto se guardan los datos en la tabla
-        rut=request.POST["rut"]
-        nombre=request.POST["nombre"]
-        apellido_paterno=request.POST["apellido"]
-        genero=request.POST["genero"]
-        email=request.POST["correo"]
-        contraseña=request.POST["contraseña"]
-        objgenero=Genero.objects.get(idgenero=genero)
-
-        obj=Cliente.objects.create(rut=rut,
-                                   nombre=nombre,
-                                    apellido_paterno= apellido_paterno,
-                                    id_genero=objgenero,
-                                    email=email,
-                                    contraseña=contraseña)
-        obj.save()
-        context={"mensaje": "Datos grabados"}
-        return render(request,'cliente/Registros/crearc.html', context)
 
 def clientes_del(request,pk):
     context={}

@@ -61,14 +61,20 @@
                 </a>            
               </li>
               
-              <li class="nav-item">
+              
                 {% csrf_token %}
                 {% if user.is_authenticated %}
-                  <a class="nav-link active" id="iniciar" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@mdo">{{user.username}}</a>
+                    {% if user.is_staff %}
+                    <li class="nav-item"><a class="nav-link active" id="iniciar" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@mdo">{{ user.username }}</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{% url 'admin'%}">Configuracion Admin</a></li>
+                    {% else %}
+                    <li class="nav-item"> <a class="nav-link active" id="iniciar" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@mdo">{{ user.first_name }}</a></li>
+                    {% endif %}
                 {% else %}
-                  <a class="nav-link active" id="iniciar" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Iniciar Sesion</a>
+                    <a class="nav-link active" href="{% url 'login' %}" id="iniciar">Iniciar Sesión</a>
                 {% endif %}
-              </li>
+           
+            
               
             </ul>
             
@@ -103,39 +109,7 @@
             </div>       
 <!-- modal-->
 
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Iniciar Sesion</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form method="post">
-          {% csrf_token %}
-          
-              <div class="mb-3">
-                <label for="recipient-name" class="col-form-label" >Correo</label>
-                <input type="text" class="form-control" placeholder="Correo" >
-              </div>
-              <div class="mb-3">
-                <label for="message-text" class="col-form-label">Contraseña</label>
-                <input type="password" class="form-control" placeholder="Contraseña" ></input>
-              </div>
-            
-            <p class="registrar">¿No tienes una cuenta? <a href="{% url 'crearc'%}">Registrate</a></p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary " >Iniciar Sesion</button>
-         </form>
-      </div>
-    </div>
-  </div>
-</div>
-            
+     
 </div>
 </div>
 </nav>

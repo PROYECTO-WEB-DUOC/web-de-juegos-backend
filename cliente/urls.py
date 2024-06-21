@@ -14,6 +14,7 @@ urlpatterns = [
     path('pc',views.pc, name='pc'),
     path('crearc',views.crearc, name='crearc'),
     path('registro',views.registro, name='registro'),
+   
 ]   
 
 if settings.DEBUG:
