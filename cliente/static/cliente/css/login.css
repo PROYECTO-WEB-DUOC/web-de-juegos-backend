@@ -1,0 +1,45 @@
+
+body{
+    background-color: #333;
+}
+form {
+    max-width: 400px;
+    width: 100%;
+    margin-top: 1000px;
+    margin-bottom: 100px;
+    margin: auto;
+    background-color: #f7f7f7;
+
+}
+form input[type="text"],
+form input[type="password"] {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+}
+
+
+form button[type="submit"] {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 32px;
+    font-size: 32px;
+}
+
+

@@ -1,9 +1,6 @@
-/* Archivo: static/css/admini.css */
-
-/* Estilos generales para el cuerpo de la página */
 body {
-    font-family: Arial, sans-serif; /* Fuente estándar */
-    background-color: #1a1a1a; /* Fondo oscuro */
+    font-family: Arial, sans-serif; 
+    background-color: #1a1a1a; 
     margin: 0;
     padding: 0;
     display: flex;
@@ -14,8 +11,6 @@ body {
     text-align: center;
     color: #fff;
 }
-
-/* Estilos generales para los enlaces */
 a {
     display: block;
     margin: 15px 0;
@@ -26,50 +21,43 @@ a {
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     text-align: center;
     font-size: 1.2em;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra para darle profundidad */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilos específicos para cada clase de enlace */
+
 .crudcli {
-    background-color: #ff4757; /* Rojo vibrante */
+    background-color: #ff4757; 
 }
 
 .crudpc {
-    background-color: #1e90ff; /* Azul claro */
+    background-color: #1e90ff;
 }
 
 .crudps5 {
-    background-color: #ffa502; /* Naranja */
-    color: #000; /* Texto negro para mejor contraste */
+    background-color: #ffa502; 
+    color: #000; 
 }
 
 .crudps4 {
-    background-color: #3742fa; /* Azul oscuro */
+    background-color: #3742fa; 
 }
 
-/* Efectos hover para los enlaces */
+
 a:hover {
     opacity: 0.8;
     transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5); /* Sombra más intensa al hacer hover */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5); 
 }
-
-/* Efectos active para los enlaces */
 a:active {
     transform: translateY(0);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra reducida al hacer clic */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); 
 }
-
-/* Efectos visited para los enlaces */
 a:visited {
     opacity: 0.9;
 }
-
-/* Añadir espacio superior e inferior a los enlaces */
 a:first-child {
     margin-top: 20px;
 }
-
 a:last-child {
     margin-bottom: 20px;
 }
