@@ -14,12 +14,14 @@
 
 <!--TITULO-->
 
+{% if juegos %}
+
 <div class="container" >
-  <img class="img-fluid" src="{% static 'cliente/img/gow carrito.png'%}" alt="" >
+  <img class="img-fluid" src="{{juegos.imagen.url}}" alt="" >
 </div>
 <div class="container-card">
 <div class="card text-bg-dark mb-3" style=>
-  <div class="card-header" ><h1>God Of War Ragnarok</h1></div>
+  <div class="card-header" ><h1>{{juegos.nombre}}</h1></div>
   <div class="card-body-1">
     <h6 class="card-title-2" style=" margin-left: 5px; border: 1px solid #fff; min-width: 7%; height: 30px;padding: 3px;" > PS5 </h6> <h6 class="card-title" > Edicion Estandar</h6>
   </div>
@@ -33,7 +35,7 @@
     </p>
     <br>
     <br>
-    <h3 >CLP 54.990$</h3>
+    <h3 >CLP {{juegos.precio}}$</h3>
     
     <button type="button" id="preciogow"  class="btn btn-primary-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
       Agregar al Carrito
@@ -50,8 +52,9 @@
   
    
   
-  </div>  
-     
+  </div> 
+  {% endif %} 
+
 </div>  
 
               <!-- Modal -->

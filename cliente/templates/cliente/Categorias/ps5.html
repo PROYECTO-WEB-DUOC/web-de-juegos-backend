@@ -18,9 +18,11 @@
    
      <!-- card models --> 
 
+     
 {% for juegos in juegoss %}
     {%if juegos.id_categoria.idcategoria == '1' %}
     <div class="card mr-3" style="width: 18rem;">
+        
         <img loading="lazy" src="{{juegos.imagen.url}} " class="card-img-top" alt="...">
         <div class="card-body">
             <p class="card-text">{{juegos.nombre}}</p>
@@ -28,9 +30,12 @@
             <p class="card-text">{{juegos.puntuacion}}</p>
         </div>
         <!--Opcion comprar-->
+        
         <div class="option-shop">
-            <button type="button" class="btn btn-primary">Detalles</button>
+            
+            <button type="button" class="btn btn-primary"><a href="{% url 'game' idjuego=juegos.idjuego %}">Detalles</a></button>
         </div>
+        
     </div>
     
     {% endif %}

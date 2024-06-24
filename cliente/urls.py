@@ -12,6 +12,7 @@ urlpatterns = [
     path('crearc',views.crearc, name='crearc'),
     path('registro',views.registro, name='registro'),
     
+    path('game/<str:idjuego>',views.game, name='game'),
 ]   
 
 if settings.DEBUG:

@@ -6,7 +6,8 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
-    context={}
+    juegos=Juegos.objects.all()
+    context={'juegos':juegos}
     return render(request, 'cliente/index.html', context)
 
 def crud(request):
@@ -14,21 +15,6 @@ def crud(request):
     context={'clientes': clientes}
     return render(request, 'cliente/crud.html', context)
 
-def gow(request):
-    context={}
-    return render(request, 'cliente/Juegos/gow.html', context)
-
-def spider(request):
-    context={}
-    return render(request, 'cliente/Juegos/spider.html', context)
-
-def bloodborne(request):
-    context={}
-    return render(request, 'cliente/Juegos/bloodborne.html', context)
-
-def dmc(request):
-    context={}
-    return render(request, 'cliente/Juegos/dmc.html', context)
 
 def ps5(request):
     juegoss=Juegos.objects.all()
@@ -85,3 +71,9 @@ def registro(request):
 
 
 
+def game(request,idjuego):
+        juegos=Juegos.objects.get(idjuego=idjuego)
+        context={'juegos':juegos}
+        return render(request,'cliente/Juegos/game.html',context)
+   
+    
