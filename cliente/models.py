@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Create your models here.
 class Cliente(models.Model):
@@ -25,10 +26,12 @@ class Genero(models.Model):
 class Juegos(models.Model):
     idjuego=models.AutoField(primary_key=True)
     nombre=models.CharField(max_length=100)
-    puntuacion=models.CharField(max_length=2)
+    puntuacion = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(10)])
     precio=models.CharField(max_length=20)
     imagen=models.ImageField( upload_to="cliente", null=False)
     id_categoria = models.ForeignKey('Categoria_juegos',on_delete=models.CASCADE, db_column='idcategoria')
+    video=models.FileField(upload_to="cliente", null=False)
     def __str__(self):
         return str(self.nombre)
 
@@ -38,3 +41,4 @@ class Categoria_juegos(models.Model):
 
     def __str__(self):
         return str(self.nombre)
+

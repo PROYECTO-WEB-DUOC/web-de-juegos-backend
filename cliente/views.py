@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import  Cliente,Genero,Juegos
+from .models import  Cliente,Genero,Juegos,Categoria_juegos
 from .forms import ClienteForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -72,8 +72,11 @@ def registro(request):
 
 
 def game(request,idjuego):
+        
         juegos=Juegos.objects.get(idjuego=idjuego)
-        context={'juegos':juegos}
+        categorias = Categoria_juegos.objects.filter(idcategoria=juegos.id_categoria.idcategoria)
+        context={'juegos':juegos,'categorias':categorias}
         return render(request,'cliente/Juegos/game.html',context)
    
-    
+
+

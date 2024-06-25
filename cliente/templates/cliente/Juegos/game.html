@@ -14,8 +14,8 @@
 
 <!--TITULO-->
 
-{% if juegos %}
-
+{% if juegos  %}
+{%for categoria in categorias %}
 <div class="container" >
   <img class="img-fluid" src="{{juegos.imagen.url}}" alt="" >
 </div>
@@ -23,15 +23,15 @@
 <div class="card text-bg-dark mb-3" style=>
   <div class="card-header" ><h1>{{juegos.nombre}}</h1></div>
   <div class="card-body-1">
-    <h6 class="card-title-2" style=" margin-left: 5px; border: 1px solid #fff; min-width: 7%; height: 30px;padding: 3px;" > PS5 </h6> <h6 class="card-title" > Edicion Estandar</h6>
+      <h6 class="card-title-2" style=" margin-left: 5px; border: 1px solid #fff; min-width: 7%; height: 30px;padding: 3px;" > {{categoria.nombre}} </h6> <h6 class="card-title" > Edicion Estandar</h6>
   </div>
   <div class="card-body">
     <p class="card-text-1">
-      4.82 <img src="/img/estrella.png" width="40px" style="margin-bottom: 5px;" alt=""> 
-      <img src="/img/estrella.png" width="40px" style="margin-bottom: 5px;" alt="">
-      <img src="/img/estrella.png" width="40px" style="margin-bottom: 5px;" alt="">
-      <img src="/img/estrella.png" width="40px" style="margin-bottom: 5px;" alt="">
-      <img src="/img/estrella.png" width="40px" style="margin-bottom: 5px;" alt=""> 100 mil Calificaciones
+      {{juegos.puntuacion}} <img src="{% static 'cliente/img/estrella.png'%}" width="40px" style="margin-bottom: 5px;" alt=""> 
+      <img src="{% static 'cliente/img/estrella.png'%}" width="40px" style="margin-bottom: 5px;" alt="">
+      <img src="{% static 'cliente/img/estrella.png'%}" width="40px" style="margin-bottom: 5px;" alt="">
+      <img src="{% static 'cliente/img/estrella.png'%}" width="40px" style="margin-bottom: 5px;" alt="">
+      <img src="{% static 'cliente/img/estrella.png'%}" width="40px" style="margin-bottom: 5px;" alt=""> 100 mil Calificaciones
     </p>
     <br>
     <br>
@@ -46,15 +46,15 @@
 <!--info juego-->
 
   <div class="container-info">
-  <p> <img src="/img/mandopng.png" width="40px" style="margin-right: 5px;" alt="">Juego Offline Activado</p>
-  <p> <img src="/img/user_icon_149851.png" width="40px"  alt="">1 Jugador</p>
-  <p> <img src="/img/mATURE 17.jpg" width="40px" alt=""> Derramamiento de Sangre</p>
+  <p> <img src="{% static 'cliente/img/mandopng.png'%}" width="40px" style="margin-right: 5px;" alt="">Juego Offline Activado</p>
+  <p> <img src="{% static 'cliente/img/user_icon_149851.png'%}" width="40px"  alt="">1 Jugador</p>
+  <p> <img src="{% static 'cliente/img/mAture 17.jpg'%}" width="40px" alt=""> Derramamiento de Sangre</p>
   
    
   
   </div> 
-  {% endif %} 
 
+  
 </div>  
 
               <!-- Modal -->
@@ -67,7 +67,7 @@
                     </div>
                     <div class="modal-body modal-body2" id="">
                       <div class="subtotal">
-                        <p>Subtotal</p> <input type="number" name="" id="subtotal">
+                        <p>Subtotal</p>
                       </div>
                       <p>Impuestos</p>
                       <p>Total</p>
@@ -76,13 +76,13 @@
                         <div class="form-check">
                           <input class="form-check-input-1" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                           <label class="form-check-label" for="flexRadioDefault1">
-                            <img src="/img/paypal_logo_icon_170865.png" alt="" class="card-img-top" id="paypal">
+                            <img src="{% static 'cliente/img/paypal_logo_icon_170865.png'%}" alt="" class="card-img-top" id="paypal">
                           </label>
                         </div>
                         <div class="form-check">
                           <input class="form-check-input-1" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
                           <label class="form-check-label" for="flexRadioDefault2">
-                            <img src="/img/Logo_BancoEstado.svg.png" alt="" class="card-img-top">
+                            <img src="{% static 'cliente/img/Logo_BancoEstado.svg.png'%}" alt="" class="card-img-top">
                           </label>
                         </div>
                       </div>
@@ -91,12 +91,12 @@
                         <div class="card2 mb-3" style="max-width: 540px;">
                           <div class="row g-0">
                             <div class="col-md-4">
-                              <img src="/img/1366_2000.jpeg" class="img-fluid2 rounded-start" alt="...">
+                              <img src="{{juegos.imagen.url}}" class="img-fluid2 rounded-start" alt="...">
                             </div>
                             <div class="col-md-8">
                               <div class="card-body2">
-                                <h5 class="card-title2">God of War Ragnarok</h5>
-                                <p class="card-text" >$10.900 CLP</p>
+                                <h5 class="card-title2">{{juegos.nombre}}</h5>
+                                <p class="card-text" >{{juegos.precio}}CLP</p>
                                 
                               </div>
                             </div>
@@ -116,9 +116,10 @@
  <details>
     <summary>TRAILER</summary>
     <div class="video">
-        <video controls autoplay muted src="{% static 'cliente/videos/God of War Ragnarök _ Tráiler de la historia _ PS5, PS4.mp4' %}"></video>
+        <video controls autoplay muted src="{{juegos.video.url}}"></video>
     </div>
 </details>
-
+{%endfor%}
+{% endif %} 
     
 {% endblock %}

@@ -24,7 +24,8 @@ urlpatterns = [
     path('cliente/Categorias/',include('cliente.urls')),
     path('cliente/Registros/',include('cliente.urls')),
     path("accounts/",include("django.contrib.auth.urls")),
-    path('administrador/',include('administrador.urls'))
+    path('administrador/',include('administrador.urls')),
+    path("accounts/google/",include("allauth.urls")),
 ]
 
 if settings.DEBUG:

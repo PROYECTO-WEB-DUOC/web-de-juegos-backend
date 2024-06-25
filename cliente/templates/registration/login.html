@@ -1,6 +1,9 @@
 {% extends 'cliente/home.html' %}
 {% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
 {% block css %}
+<link rel="stylesheet" href="{% static  'cliente/css/style.css'%}">
 <link rel="stylesheet" href="{% static  'cliente/css/login.css'%}">
 {% endblock %}
 
@@ -13,12 +16,15 @@
 
     
 {% block contenido %}
+
     <h1>login</h1>
 
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p}}
+        
         <button type="submit"> iniciar sesion</button>
+        <a href="{% provider_login_url 'google' %}">Iniciar Sesion Con Google</a>
     </form>
     
     
