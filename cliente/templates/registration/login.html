@@ -24,8 +24,11 @@
         {{ form.as_p}}
         
         <button type="submit"> iniciar sesion</button>
-        <a href="{% provider_login_url 'google' %}">Iniciar Sesion Con Google</a>
+        <a href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?client_id=915305928226-iqm8cj8u4em3640aacafdkt0kvbsiuug.apps.googleusercontent.com&redirect_uri=http%3A%2F%2F127.0.0.1%3A8000%2Faccounts%2Fgoogle%2Fgoogle%2Flogin%2Fcallback%2F&scope=profile&response_type=code&state=sXH6xVwWw9s3bsAN&service=lso&o2v=2&ddm=0&flowName=GeneralOAuthFlow">
+            Iniciar Sesion Con Google</a>
     </form>
+
+    
     
     
 {% endblock %}

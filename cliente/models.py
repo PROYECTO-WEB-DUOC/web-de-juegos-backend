@@ -32,6 +32,7 @@ class Juegos(models.Model):
     imagen=models.ImageField( upload_to="cliente", null=False)
     id_categoria = models.ForeignKey('Categoria_juegos',on_delete=models.CASCADE, db_column='idcategoria')
     video=models.FileField(upload_to="cliente", null=False)
+    estreno=models.BooleanField(default= False)
     def __str__(self):
         return str(self.nombre)
 
