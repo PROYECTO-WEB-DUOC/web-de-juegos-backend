@@ -18,7 +18,7 @@
             {% csrf_token %}
             
             <label for="rut">Rut:</label>
-            <input type="text" id="rut" class="input" placeholder="Ingrese su rut aqui" name="rut" required>
+            <input type="text" id="rut" class="input" placeholder="Ingrese su rut aqui, sin puntos y sin guion" name="rut" required>
             <div id="mensaje0" class="errores"> Dame tu rut</div>
 
             <label for="nombre">Nombre:</label>
@@ -68,12 +68,16 @@
                 var contraseña=$('#contraseña').val()
                 var contraseña2=$('#confirmar_contraseña').val()
                 
-                if(rut==""){
-                    $("#mensaje0").fadeIn();
-                    return false
-                }else{
-                    $("#mensaje0").fadeOut();
-                }
+                if (rut == "") {
+                $("#mensaje0").fadeIn();
+                return false;
+            } else if (!/^\d{9}$/.test(rut)) {
+                $("#mensaje0").fadeIn().text("El RUT debe tener 8 caracteres numéricos.");
+                return false;
+            } else {
+                $("#mensaje0").fadeOut();
+            }
+
 
                 if(nombre==""){
                     $("#mensaje1").fadeIn();
