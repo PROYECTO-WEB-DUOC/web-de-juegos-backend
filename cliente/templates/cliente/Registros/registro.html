@@ -6,11 +6,13 @@
 
 {% block js %}
     <script src="{% static 'cliente/js/api.js'%}"></script>
+    <script src="{% static 'cliente/js/email.js'%}"></script>
 {% endblock %}
 
 {% block contenido %}
 
 <script>type="text/javascript"</script>
+<form action="" method="post">
     <div class="form">
         <div class="titulo">
             <h1>Contacto</h1>
@@ -18,32 +20,33 @@
         <hr>
         <br>
         <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Nombre</span>
-            <input type="text" class="form-control" placeholder="Ej: Maximiliano Duran" aria-label="Username" aria-describedby="basic-addon1">
+            <span class="input-group-text" >Nombre</span>
+            <input type="text" id="nombre" class="form-control" placeholder="Ej: Maximiliano Duran" aria-label="Username" aria-describedby="basic-addon1">
         
           </div>
         
         <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Correo</span>
-            <input type="text" class="form-control" placeholder="Ej: nico123" aria-label="Recipient's username" aria-describedby="basic-addon2">
-            <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+            <span class="input-group-text" >Correo</span>
+            <input type="text" class="form-control" id="correo" placeholder="Ej: nico123" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <span class="input-group-text" id="">@gmail.com</span>
         </div>
         
-        <label for="basic-url" class="form-label">Asunto</label>
+        <label for="basic-url" id="asunto" class="form-label">Asunto</label>
        
         
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="" aria-label="Username">
+            <input type="text" id="asunto" class="form-control" placeholder="" aria-label="Username">
             
             
         </div>
         
         <div class="input-group">
             <span class="input-group-text">Mensaje</span>
-            <textarea class="form-control" aria-label="With textarea"></textarea>
+            <textarea  id="mensaje" class="form-control" aria-label="With textarea"></textarea>
         </div>
-        <button type="button" class="btn btn-success">Enviar</button>
+        <button type="submit" id="btnenviar" class="btn btn-success">Enviar</button>
     </div>
+</form>
 
     <br>
     <br>
