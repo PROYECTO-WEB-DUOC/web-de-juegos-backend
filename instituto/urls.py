@@ -26,6 +26,7 @@ urlpatterns = [
     path("accounts/",include("django.contrib.auth.urls")),
     path('administrador/',include('administrador.urls')),
     path("accounts/google/",include("allauth.urls")),
+    path('social-auth/',include('social_django.urls', namespace="social"))
 ]
 
 if settings.DEBUG:

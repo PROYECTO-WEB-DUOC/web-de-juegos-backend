@@ -1,14 +1,17 @@
 from django.shortcuts import render
-from .models import  Cliente,Genero,Juegos,Categoria_juegos
+from .models import  Cliente,Genero,Juegos,Categoria_juegos,Carrousel_2025
 from .forms import ClienteForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
+    carrousel=Carrousel_2025.objects.all();
     juegos=Juegos.objects.all()
-    context={'juegos':juegos}
+    context={'juegos':juegos,'carrousel':carrousel}
     return render(request, 'cliente/index.html', context)
+
+    
 
 def crud(request):
     clientes=Cliente.objects.all()
@@ -72,7 +75,6 @@ def registro(request):
 
 
 def game(request,idjuego):
-        
         juegos=Juegos.objects.get(idjuego=idjuego)
         categorias = Categoria_juegos.objects.filter(idcategoria=juegos.id_categoria.idcategoria)
         context={'juegos':juegos,'categorias':categorias}

@@ -32,15 +32,27 @@ AUTHENTICATION_BACKENDS = [
     
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-
+    
     # `allauth` specific authentication methods, such as login by email
     'allauth.account.auth_backends.AuthenticationBackend',
-    
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend'
 ]
 SITE_ID=1
+#login
 LOGIN_REDIRECT_URL='login'
 LOGOUT_REDIRECT_URL='login'
 
+#facebook
+SOCIAL_AUTH_FACEBOOK_KEY ="792032003082904"
+SOCIAL_AUTH_FACEBOOK_SECRET="e20e7c0cfc748ea958d8fc1d96026ef5"
+#google
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '915305928226-iqm8cj8u4em3640aacafdkt0kvbsiuug.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+
+#errores
+SOCIAL_AUTH_RAISE_EXCEPTIONS = False
+LOGIN_ERROR_URL='/cliente/index'
 # Application definition
 
 INSTALLED_APPS = [
@@ -58,6 +70,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',  
+    'social_django'
 ]
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
@@ -72,6 +85,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "allauth.account.middleware.AccountMiddleware",
+    'social_django.middleware.SocialAuthExceptionMiddleware'
+    
 ]
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # O cualquier otro backend que estés utilizando
@@ -90,6 +105,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect'
                 
             ],
         },
@@ -154,3 +171,5 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+

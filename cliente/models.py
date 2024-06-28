@@ -43,3 +43,9 @@ class Categoria_juegos(models.Model):
     def __str__(self):
         return str(self.nombre)
 
+class Carrousel_2025 (models.Model):
+    nombre=models.CharField(max_length=100)
+    imagen=models.ImageField( upload_to="cliente", null=False)
+
+    def __str__(self):
+        return str(self.nombre)

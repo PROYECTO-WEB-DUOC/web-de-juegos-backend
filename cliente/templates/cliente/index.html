@@ -40,36 +40,28 @@
       </div>
       
 <!-- CARDS-->
-    <section>
-      <div class="linea">
-        <h2 class="titulo2" id="titulo3">ESTRENOS</h2>
-        <div class="line"></div>
-      </div>
+<section>
+  <div class="linea">
+    <h2 class="titulo2" id="titulo3">ESTRENOS</h2>
+    <div class="line"></div>
+  </div>
+  <div class="juntar"> 
+      {% for juego in juegos %}
       
-  
-      <div class="juntar"> <!-- CARDS AL LADO DE Otra-->
-        <!-- CARD 1 -->
-        <div class="cards">
-            <a href="" class="enlace" ></a>
-            <img class="imagen2" loading="lazy" src="{% static 'cliente/img/gow carrito.png'%}"  class="card-img-top" alt="...">
-
-          </div>
-        <!-- CARD 2 -->
-        <div class="cards">
-          <a href="" class="enlace" ></a>
-          <img class="imagen2" loading="lazy" src="{% static 'cliente/img/dmc.webp'%}"  class= "card-img-top" alt="...">
-        </div>
-        <!-- CARD 3-->
+        {% if juego.estreno %}
         
-        <div class="cards">
-          <a href="" class="enlace" ></a>
-          <img class="imagen2" loading="lazy" src="{% static 'cliente/img/bloodborne-5k-2880x1800-13122.png'%}" class="card-img-top" alt="...">
-        </div>
-        <!-- CARD 4 -->
-        <div class="cards">
-          <a href="" class="enlace" ></a>
-          <img class="imagen2" loading="lazy" src="{% static 'cliente/img/spider-man-2-official-game.jpg'%}" class="card-img-top" alt="...">
-        </div>
+          
+            <div class="cards">
+                <a href="{% url 'game' idjuego=juego.idjuego %}" class="enlace"></a> 
+                <img class="imagen2" loading="lazy" src="{{ juego.imagen.url }}" class="card-img-top" alt="...">
+            </div>
+          
+      
+        {% endif %}
+    
+    {% endfor %}
+</div>
+</section>
 
       
   <!--proximamente-->
@@ -96,43 +88,32 @@
     </div>
     
     <!--carrusel-->
- 
-      <div id="carouselExampleCaptions" class="carousel slide">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="{% static 'cliente/img/maxresdefault.jpg'%}" class="imagen" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Grand Theft Auto VI</h5>
-              <p></p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="{% static 'cliente/img/death stranding 2.jpg'%}" class="imagen" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Death Stranding 2</h5>
-              <p></p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="{% static 'cliente/img//silent hill 2 remake.jpg'%}" class="imagen" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Silent Hill 2 Remake</h5>
-              <p></p>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" id="prev" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-          <span class="carousel-control-next-icon" id="next" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+    <div id="carouselExampleCaptions" class="carousel slide" >
+      <div class="carousel-indicators">
+        {% for carrou in carrousel %}
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{forloop.counter0}}" class="active" aria-current="true" aria-label="Slide 1"></button>
+        {% endfor %}
       </div>
+      
+      <div class="carousel-inner">
+        {% for carrou in carrousel %}
+        <div class="carousel-item {% if forloop.first %} active {% endif %}">
+          <img src="{{carrou.imagen.url}}" class="imagen" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5> {{carrou.nombre}} </h5>
+            <p></p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" id="prev" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" id="next" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
 {% endblock %}
