@@ -16,24 +16,19 @@ def crud(request):
 
 def clientes_del(request,pk):
     context={}
-    try:
-        cliente=Cliente.objects.get(rut=pk)
-        cliente.delete()
+    cliente=Cliente.objects.get(rut=pk)
+    cliente.delete()
 
-        mensaje="datos eliminados"
-        clientes=Cliente.objects.all()
-        context={'clientes': clientes, 'mensaje':mensaje}
-        return render(request,'administrador/crud.html',context)
+    
+    clientes=Cliente.objects.all()
+    context={'clientes': clientes, 'mensaje':mensaje}
+    return render(request,'administrador/crud.html',context)
 
-    except:
-        mensaje="rut no encontrado"
-        clientes=Cliente.objects.all()
-        context={'clientes': clientes, 'mensaje':mensaje}
-        return render(request,'administrador/crud.html',context)
+   
 
 
 def clientes_edit(request,pk):
-    try:
+ 
         #obtenemos los ruts de los clientes
         cliente=Cliente.objects.get(rut=pk)
         context={}
@@ -52,12 +47,6 @@ def clientes_edit(request,pk):
                  form=ClienteForm(instance=cliente)
                  context={'cliente':cliente,'form':form}
                  return render(request,'administrador/crud.html',context)
-    except:
-        print("rut no existe")
-        clientes=Cliente.objects.all()
-        
-        context={'clientes':clientes}
-        return render(request,'administrador/crud.html',context)
 
 
 #crus juegos general

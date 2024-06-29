@@ -37,9 +37,7 @@
     <br>
     <h3 >CLP {{juegos.precio}}$</h3>
     
-    <button type="button" id="preciogow"  class="btn btn-primary-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-      Agregar al Carrito
-    </button>
+    <button type="button" id="preciogow"  class="btn btn-primary-2"> <a href=" {% url 'carrito_add' correo=user.username idjuego=juegos.idjuego%}">Agregar al carrito</a> </button>
    
   </div>
 </div>
@@ -57,60 +55,6 @@
   
 </div>  
 
-              <!-- Modal -->
-              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog2">
-                  <div class="modal-content modal-content2">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirmar Compra</h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body modal-body2" id="">
-                      <div class="subtotal">
-                        <p>Subtotal</p>
-                      </div>
-                      <p>Impuestos</p>
-                      <p>Total</p>
-                      <H5>Medios de Pagos</H5>
-                      <div class="metodo">
-                        <div class="form-check">
-                          <input class="form-check-input-1" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                          <label class="form-check-label" for="flexRadioDefault1">
-                            <img src="{% static 'cliente/img/paypal_logo_icon_170865.png'%}" alt="" class="card-img-top" id="paypal">
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input-1" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                          <label class="form-check-label" for="flexRadioDefault2">
-                            <img src="{% static 'cliente/img/Logo_BancoEstado.svg.png'%}" alt="" class="card-img-top">
-                          </label>
-                        </div>
-                      </div>
-                      <h5>Resumen</h5>
-                      <div class="Resumen">
-                        <div class="card2 mb-3" style="max-width: 540px;">
-                          <div class="row g-0">
-                            <div class="col-md-4">
-                              <img src="{{juegos.imagen.url}}" class="img-fluid2 rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                              <div class="card-body2">
-                                <h5 class="card-title2">{{juegos.nombre}}</h5>
-                                <p class="card-text" >{{juegos.precio}}CLP</p>
-                                
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="modal-footer modal-footer2">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Seguir Comprando</button>
-                      <button type="button" class="btn btn-primary">Comprar</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
  
  <!--trailer-->
  <details>

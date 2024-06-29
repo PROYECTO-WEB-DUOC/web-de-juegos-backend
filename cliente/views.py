@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import  Cliente,Genero,Juegos,Categoria_juegos,Carrousel_2025
+from .models import  Cliente,Genero,Juegos,Categoria_juegos,Carrousel_2025,Carrito
 from .forms import ClienteForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -8,7 +8,9 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     carrousel=Carrousel_2025.objects.all();
     juegos=Juegos.objects.all()
-    context={'juegos':juegos,'carrousel':carrousel}
+    cliente=Cliente.objects.all()
+    
+    context={'juegos':juegos,'carrousel':carrousel,'cliente':cliente}
     return render(request, 'cliente/index.html', context)
 
     
@@ -65,6 +67,10 @@ def crearc(request):
                     last_name=apellido_paterno
                 )
         user.save()
+        carrito = Carrito.objects.create(
+                    correo_cliente=email,
+                )
+        carrito.save()
         return render(request,'cliente/Registros/crearc.html', context)
 def registro(request):
     context={}
@@ -82,3 +88,34 @@ def game(request,idjuego):
    
 
 
+#carrito
+def carrito(request,correo):
+
+    carrito=Carrito.objects.get(correo_cliente=correo)
+    carritos=Carrito.objects.all()
+    context={'carrito':carrito}
+    return render(request, 'cliente/Juegos/carrito.html', context)
+
+
+
+def carrito_add(request,correo,idjuego):
+        carrito=Carrito.objects.get(correo_cliente=correo)
+        juegos=Juegos.objects.get(idjuego = idjuego)
+        
+        carrito.juegos.add(juegos)
+        carrito.actualizar_precio_total()
+        carrito.save()    
+        mensaje = 'Juego añadido al carrito'
+        context = {'mensaje': mensaje, 'carrito': carrito}
+        return render(request, 'cliente/Juegos/game.html', context)
+   
+def carrito_del(request,correo,idjuego):
+ 
+    carrito=Carrito.objects.get(correo_cliente=correo)
+    juegos=Juegos.objects.get(idjuego = idjuego)
+    carrito.juegos.remove(juegos)
+    carrito.actualizar_precio_total()
+    context={'carrito':carrito}
+    return render(request,'cliente/Juegos/carrito.html',context)
+        
+   

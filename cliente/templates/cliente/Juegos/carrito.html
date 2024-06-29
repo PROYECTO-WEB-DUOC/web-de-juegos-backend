@@ -1,0 +1,44 @@
+{% extends 'cliente/home.html' %}
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+{% block css %}
+<link rel="stylesheet" href="{% static  'cliente/css/style.css'%}">
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'cliente/js/script.js'%}"></script>
+<script src="{% static 'cliente/js/cambio-fondo.js'%}"></script>
+<script src="{% static 'cliente/js/api.js'%}"></script>
+
+{% endblock %}
+
+
+
+{% block contenido %}
+<table style=" margin: auto; margin-top: 500px; border: 1px solid white;">
+    <tr>
+        <th style="border: 1px solid white; color: white;">ID</th>
+        <th style="border: 1px solid white; color: white;">correo</th>
+        <th style="border: 1px solid white; color: white;">Juegos</th>
+        <th style="border: 1px solid white; color: white;">Precio</th>
+    </tr>
+    {% if carrito %}
+        <tr>
+            <td style="color: white;">{{ carrito.idcarrito }}</td>
+            <td style="color: white;">{{ carrito.correo_cliente }}</td>
+            <td style="color: white;">
+                {% for juego in carrito.juegos.all %}
+                    {{ juego.nombre }} <a href="{% url 'carrito_del' correo=user.username idjuego=juego.idjuego%}">eliminar</a><br>
+                {% endfor %}
+            </td>
+            <td style="color: white;">{{ carrito.precio_total }}</td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="4">No hay carrito disponible para este cliente.</td>
+        </tr>
+    {% endif %}
+</table>
+{% endblock %}
