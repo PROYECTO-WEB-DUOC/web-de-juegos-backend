@@ -43,11 +43,12 @@
 
   <form action="" method="POST">
     {% csrf_token %}
-    {{ form.as_table }}
+    {{ form.as_p }}
 
     
     <input style="position: relative; top: 190px; left: 50px;" type="submit" name="opcion" value="Actualizar">
   </form>
+  
   <a style="position: relative; top: 190px; left: 100px;" href="{% url 'crud'%}">Volver</a>
   {% endif %}
 

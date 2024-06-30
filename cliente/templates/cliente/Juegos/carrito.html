@@ -4,7 +4,7 @@
 {% providers_media_js %}
 {% block css %}
 <link rel="stylesheet" href="{% static  'cliente/css/style.css'%}">
-
+<link rel="stylesheet" href="{% static  'cliente/css/carrito.css'%}">
 {% endblock %}
 
 {% block js %}
@@ -17,28 +17,54 @@
 
 
 {% block contenido %}
-<table style=" margin: auto; margin-top: 500px; border: 1px solid white;">
-    <tr>
-        <th style="border: 1px solid white; color: white;">ID</th>
-        <th style="border: 1px solid white; color: white;">correo</th>
-        <th style="border: 1px solid white; color: white;">Juegos</th>
-        <th style="border: 1px solid white; color: white;">Precio</th>
-    </tr>
-    {% if carrito %}
-        <tr>
-            <td style="color: white;">{{ carrito.idcarrito }}</td>
-            <td style="color: white;">{{ carrito.correo_cliente }}</td>
-            <td style="color: white;">
-                {% for juego in carrito.juegos.all %}
-                    {{ juego.nombre }} <a href="{% url 'carrito_del' correo=user.username idjuego=juego.idjuego%}">eliminar</a><br>
-                {% endfor %}
-            </td>
-            <td style="color: white;">{{ carrito.precio_total }}</td>
-        </tr>
-    {% else %}
-        <tr>
-            <td colspan="4">No hay carrito disponible para este cliente.</td>
-        </tr>
-    {% endif %}
-</table>
+{% if user.is_authenticated %}
+{% if carrito %}
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="carrito">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <h3>Carro ({{ carrito.juegos.count }} Items)</h3>
+                            <h4>Productos en el carrito de {{ user.first_name }}</h4>
+                        </div>
+                        <div class="card-body">
+                            {% for juego in carrito.juegos.all %}
+                            <div class="row g-0 mb-3">
+                                <div class="col-md-4">
+                                    <img src="{{ juego.imagen.url }}" class="img-fluid rounded-start" alt="Imagen de {{ juego.nombre }}">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Juego: {{ juego.nombre }}</h5>
+                                        <p class="card-text"><small class="text-body-secondary">Precio: ${{ juego.precio }} cantidad{{juego.count}}</small></p>
+                                        <a href="{% url 'carrito_del' correo=user.username idjuego=juego.idjuego %}" style="font-style: italic; text-decoration: none;">Eliminar</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-light mb-3" id="card-precio">
+                    <div class="card-header">Resumen ({{ carrito.juegos.count }} Juegos)</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Precio Total de Juegos</h5>
+                        <p class="card-text">${{ carrito.precio_total }}</p>
+                    </div>
+                    <div class="card-header"><button type="button" class="btn btn-success">Comprar</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  
+ 
+  {% endif %}
+  {% endif %}
 {% endblock %}

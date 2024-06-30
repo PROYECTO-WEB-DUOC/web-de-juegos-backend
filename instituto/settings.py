@@ -43,6 +43,45 @@ SITE_ID=1
 LOGIN_REDIRECT_URL='login'
 LOGOUT_REDIRECT_URL='login'
 
+
+#facebook
+SOCIAL_AUTH_FACEBOOK_KEY="792032003082904"
+SOCIAL_AUTH_FACEBOOK_SECRET="e20e7c0cfc748ea958d8fc1d96026ef5"
+
+SOCIAL_AUTH_FACEBOOK_SCOPE=['email','user_link']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS={
+    'fields':'id, name, email, picture.type(large), link'
+}
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA=[
+    ('name','name'),
+    ('email','email'),
+    ('picture','picture'),
+    ('link','profile_link'),
+]
+#google
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '915305928226-iqm8cj8u4em3640aacafdkt0kvbsiuug.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'PROFILE_FIELDS': ['id', 'name', 'email', 'picture', 'link'],
+        'EXTRA_DATA': [
+            ('id', 'id'),
+            ('email', 'email'),
+            ('name', 'name'),
+            ('picture', 'picture'),
+            ('link', 'profile_link'),
+        ],
+    }
+}
+
+
+# Configuración de claves API de Google
+
 #errores
 SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 LOGIN_ERROR_URL='/cliente/index'

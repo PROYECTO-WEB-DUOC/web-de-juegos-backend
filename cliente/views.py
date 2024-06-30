@@ -3,6 +3,9 @@ from .models import  Cliente,Genero,Juegos,Categoria_juegos,Carrousel_2025,Carri
 from .forms import ClienteForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+
+
+
 # Create your views here.
 
 def index(request):
@@ -51,14 +54,7 @@ def crearc(request):
         contraseña=request.POST["contraseña"]
         objgenero=Genero.objects.get(idgenero=genero)
 
-        obj=Cliente.objects.create(rut=rut,
-                                   nombre=nombre,
-                                    apellido_paterno= apellido_paterno,
-                                    id_genero=objgenero,
-                                    email=email,
-                                    contraseña=contraseña)
-        obj.save()
-        context={"mensaje": "Datos grabados"}
+       
         user = User.objects.create_user(
                     username=email,
                     email=email,
@@ -67,6 +63,16 @@ def crearc(request):
                     last_name=apellido_paterno
                 )
         user.save()
+        obj=Cliente.objects.create(
+                                   user=user,
+                                   rut=rut,
+                                   nombre=nombre,
+                                    apellido_paterno= apellido_paterno,
+                                    id_genero=objgenero,
+                                    email=email,
+                                    contraseña=contraseña)
+        obj.save()
+        context={"mensaje": "Datos grabados"}
         carrito = Carrito.objects.create(
                     correo_cliente=email,
                 )
@@ -79,7 +85,7 @@ def registro(request):
 
 
 
-
+@login_required
 def game(request,idjuego):
         juegos=Juegos.objects.get(idjuego=idjuego)
         categorias = Categoria_juegos.objects.filter(idcategoria=juegos.id_categoria.idcategoria)
@@ -89,8 +95,9 @@ def game(request,idjuego):
 
 
 #carrito
+@login_required
 def carrito(request,correo):
-
+    
     carrito=Carrito.objects.get(correo_cliente=correo)
     carritos=Carrito.objects.all()
     context={'carrito':carrito}
@@ -118,4 +125,8 @@ def carrito_del(request,correo,idjuego):
     context={'carrito':carrito}
     return render(request,'cliente/Juegos/carrito.html',context)
         
-   
+
+
+
+
+

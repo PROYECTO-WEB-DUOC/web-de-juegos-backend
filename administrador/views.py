@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from cliente.models import  Cliente,Juegos
-from cliente.forms import ClienteForm,Juegos_Form
+from cliente.forms import ClienteForm,Juegos_Form,UserForm
 # Create your views here.
 def admin(request):
     context={}
@@ -18,7 +18,9 @@ def clientes_del(request,pk):
     context={}
     cliente=Cliente.objects.get(rut=pk)
     cliente.delete()
-
+    
+    user=cliente.user
+    user.delete()
     
     clientes=Cliente.objects.all()
     context={'clientes': clientes, 'mensaje':mensaje}
@@ -28,22 +30,26 @@ def clientes_del(request,pk):
 
 
 def clientes_edit(request,pk):
- 
         #obtenemos los ruts de los clientes
         cliente=Cliente.objects.get(rut=pk)
+       
         context={}
-        if cliente:
             #evaluamos si es post
-            if request.method =="POST":
+        if request.method =="POST":
+               
                 form=ClienteForm(request.POST,instance=cliente)
-                form.save()
-                mensaje='DATOS ACTUALIZADOS'
-                
-                context={'cliente':cliente,'form':form,'mensaje':mensaje}
-                return render(request,'administrador/crud.html',context)
-            else:
-                #no es un post
-                 
+                if form.is_valid() :
+                    form.save()
+                    
+                    mensaje='DATOS ACTUALIZADOS'
+                    context = {'cliente': cliente, 'form': form,  'mensaje': mensaje}
+                    return render(request,'administrador/crud.html',context)  
+                else:
+                    print("error")
+                    context = {'cliente': cliente, 'form': form, 'form_errors': form.errors, 'formuser_errors': formuser.errors}
+                    print(context)
+                    return render(request,'administrador/crud.html',context)  
+        else:
                  form=ClienteForm(instance=cliente)
                  context={'cliente':cliente,'form':form}
                  return render(request,'administrador/crud.html',context)
@@ -61,14 +67,16 @@ def juegos_add(request):
     context={}
     if request.method == "POST": 
         form=Juegos_Form(request.POST,request.FILES)
+        print("es post")
         if form.is_valid():
+            print("valido")
             form.save()
             form=Juegos_Form()
             mensaje="datos guardados"
             context={'mensaje':mensaje,'form':form}
             return render(request,'administrador/crud_juegos.html',context)  
     else:
-        
+        print("error")
         form=Juegos_Form()
         context={'form':form}
         return render(request,'administrador/crud_juegos.html',context)

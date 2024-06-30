@@ -1,8 +1,9 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
-
+from django.contrib.auth.models import User
 # Create your models here.
 class Cliente(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     rut = models.CharField(primary_key=True, max_length=10)
     nombre = models.CharField(max_length=20)
     apellido_paterno = models.CharField(max_length=20)
@@ -30,6 +31,9 @@ class Juegos(models.Model):
         validators=[MinValueValidator(1), MaxValueValidator(10)])
     precio=models.CharField(max_length=20)
     imagen=models.ImageField( upload_to="cliente", null=False)
+    cantidad_jugadores=models.CharField(max_length=100)
+    online=models.BooleanField(default=False)
+    mas18=models.BooleanField(default=False)
     id_categoria = models.ForeignKey('Categoria_juegos',on_delete=models.CASCADE, db_column='idcategoria')
     video=models.FileField(upload_to="cliente", null=False)
     estreno=models.BooleanField(default= False)
@@ -61,6 +65,9 @@ class Carrito(models.Model):
         total = sum(float(juego.precio) for juego in self.juegos.all())
         self.precio_total = str(total)
         self.save()
+    
+    
 
     def __str__(self):
         return str(self.idcarrito)
+    

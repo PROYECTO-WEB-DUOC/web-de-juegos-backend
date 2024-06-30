@@ -42,7 +42,7 @@
 {% if juegos_edit %}
     <form action="" method="POST" enctype="multipart/form-data" >
         {% csrf_token %}
-        {{ form.as_table }}
+        {{ form.as_p }}
         
 
         
@@ -54,7 +54,7 @@
    
 <form action="" method="POST"  enctype="multipart/form-data" >
         {% csrf_token %}
-        {{ form.as_table }}
+        {{ form.as_p }}
         <input style="position: relative; top: 190px; left: 50px;" type="submit" name="opcion" value="Agregar">
 </form>
 <a style="position: relative; top: 190px; left: 100px;" href="{% url 'crud_juegos' %}">Volver</a>

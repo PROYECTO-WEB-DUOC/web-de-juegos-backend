@@ -26,18 +26,19 @@
       <h6 class="card-title-2" style=" margin-left: 5px; border: 1px solid #fff; min-width: 7%; height: 30px;padding: 3px;" > {{categoria.nombre}} </h6> <h6 class="card-title" > Edicion Estandar</h6>
   </div>
   <div class="card-body">
+    <p class="card-text-1">Puntuacion : {{juegos.puntuacion}}</p>
     <p class="card-text-1">
-      {{juegos.puntuacion}} <img src="{% static 'cliente/img/estrella.png'%}" width="40px" style="margin-bottom: 5px;" alt=""> 
-      <img src="{% static 'cliente/img/estrella.png'%}" width="40px" style="margin-bottom: 5px;" alt="">
-      <img src="{% static 'cliente/img/estrella.png'%}" width="40px" style="margin-bottom: 5px;" alt="">
-      <img src="{% static 'cliente/img/estrella.png'%}" width="40px" style="margin-bottom: 5px;" alt="">
-      <img src="{% static 'cliente/img/estrella.png'%}" width="40px" style="margin-bottom: 5px;" alt=""> 100 mil Calificaciones
+    <img src="{% static 'cliente/img/estrella.png'%}" width="40px" style="margin-bottom: 5px;" alt=""> 
+    <img src="{% static 'cliente/img/estrella.png'%}" width="40px" style="margin-bottom: 5px; " alt="">
+    <img src="{% static 'cliente/img/estrella.png'%}" width="40px" style="margin-bottom: 5px;" alt="">
+    <img src="{% static 'cliente/img/estrella.png'%}" width="40px" style="margin-bottom: 5px;" alt="">
+    <img src="{% static 'cliente/img/estrella.png'%}" width="40px" style="margin-bottom: 5px;" alt=""> 100 mil Calificaciones
     </p>
     <br>
     <br>
     <h3 >CLP {{juegos.precio}}$</h3>
     
-    <button type="button" id="preciogow"  class="btn btn-primary-2"> <a href=" {% url 'carrito_add' correo=user.username idjuego=juegos.idjuego%}">Agregar al carrito</a> </button>
+    <button type="button" id="preciogow"  class="btn btn-primary-2"> <a href=" {% url 'carrito_add' correo=user.username idjuego=juegos.idjuego%}" style="color: #fff; text-decoration: none;">Agregar al carrito</a> </button>
    
   </div>
 </div>
