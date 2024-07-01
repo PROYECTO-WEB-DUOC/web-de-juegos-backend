@@ -25,15 +25,15 @@
         
         <img loading="lazy" src="{{juegos.imagen.url}} " class="card-img-top" alt="...">
         <div class="card-body">
-            <p class="card-text">{{juegos.nombre}}</p>
+            <p class="card-text" style="text-decoration: none;"> {{juegos.nombre}}</p>
             <hr>
-            <p class="card-text">{{juegos.puntuacion}}</p>
+            <p class="card-text" style="text-decoration: none;">Puntuacion: {{juegos.puntuacion}}</p>
         </div>
         <!--Opcion comprar-->
         
         <div class="option-shop">
             
-            <button type="button" class="btn btn-primary"><a href="{% url 'game' idjuego=juegos.idjuego %}">Detalles</a></button>
+            <button type="button" class="btn btn-primary"><a href="{% url 'game' idjuego=juegos.idjuego %}" style="text-decoration: none; color: #fff;" >Detalles</a></button>
         </div>
         
     </div>

@@ -3,9 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+  <script>
+     function Eliminarproducto(id){
+       console.log(id)
+        Swal.fire({
+            "title":"¿Estas Seguro de eliminar este cliente?",
+             "text":"",
+            "icon":"question",
+            "showCancelButton":true,
+            "cancelButtonText":"Cancelar",
+            "confirmButtonText":"Eliminar",
+            "confirmButtonColor":"#dc3545"
+        })
+        .then(function(result){
+            if(result.isConfirmed){
+                window.location.href = "/administrador/juegos_del/" + id  ;
+
+
+            }
+        })
+    }
+  </script>
     <button><a href="{% url 'admin' %}"> volver</a></button>
     <h1>Juegos </h1>
   
@@ -31,7 +54,7 @@
         <td id="categoria">{{juegoss.video}}
         <td id="estreno">{{juegoss.estreno}}
        
-        <td><a href="{% url 'juegos_del' pk=juegoss.idjuego %}">Eliminar</a></td>
+        <td><a href="#" onclick="Eliminarproducto('{{juegoss.idjuego}}')">Eliminar</a></td>
         <td><a href="{% url 'juegos_edit' pk=juegoss.idjuego %}">Modificar</a></td>
       </tr>
         {% endfor %}
@@ -52,12 +75,7 @@
 {% endif %}
       <!--agregar juego pc-->
    
-<form action="" method="POST"  enctype="multipart/form-data" >
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input style="position: relative; top: 190px; left: 50px;" type="submit" name="opcion" value="Agregar">
-</form>
-<a style="position: relative; top: 190px; left: 100px;" href="{% url 'crud_juegos' %}">Volver</a>
+
  
 </body>
 </html>

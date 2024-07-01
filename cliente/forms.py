@@ -1,8 +1,12 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Cliente,Juegos
+from .models import Cliente,Juegos,Carrousel_2025
 from django.contrib.auth.models import User
+from django.forms import ValidationError
 class ClienteForm(forms.ModelForm):
+
+    
+       
     class Meta:
         model = Cliente
         fields = ['rut', 'nombre', 'apellido_paterno', 'id_genero', 'email', 'contraseña', 'carrito'] 
@@ -23,5 +27,10 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ['username', 'email', 'password', 'first_name', 'last_name']
 
+
+class CarruselForm(ModelForm):
+    class Meta:
+        model=Carrousel_2025
+        fields='__all__'
 
 

@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Document</title>
+    {% load static %}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <button><a href="{% url 'admin' %}"> volver</a></button>
@@ -28,5 +31,17 @@
           {{ form.as_p }}
           <input style="position: relative; top: 190px; left: 50px;" type="submit" name="opcion" value="Agregar"> 
          <a style="position: relative; top: 190px; left: 100px;" href="{% url 'crud_juegos' %}">Volver</a>
+
 </form>
-      
+
+{% if messages %}
+         {% for m in messages%}
+             <script>
+                 Swal.fire({
+                     "title":"{{m}}",
+                     "text":"",
+                     "icon":"success"
+                 })
+             </script>
+         {% endfor %}
+     {% endif %} 

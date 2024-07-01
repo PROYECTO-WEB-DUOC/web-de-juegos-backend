@@ -1,4 +1,6 @@
 {% extends 'cliente/home.html' %}
+
+
 {% load static %}
 {% load socialaccount %}
 {% providers_media_js %}
@@ -11,6 +13,27 @@
 <script src="{% static 'cliente/js/script.js'%}"></script>
 <script src="{% static 'cliente/js/cambio-fondo.js'%}"></script>
 <script src="{% static 'cliente/js/api.js'%}"></script>
+
+<script>
+    function Eliminarproducto(id,correo){
+        Swal.fire({
+            "title":"¿Estas Seguro de eliminar este juego?",
+             "text":"",
+            "icon":"question",
+            "showCancelButton":true,
+            "cancelButtonText":"Cancelar",
+            "confirmButtonText":"Eliminar",
+            "confirmButtonColor":"#dc3545"
+        })
+        .then(function(result){
+            if(result.isConfirmed){
+                window.location.href = "/cliente/Registros/carrito_del/" + id + "/" + correo ;
+
+
+            }
+        })
+    }
+</script>
 
 {% endblock %}
 
@@ -39,7 +62,8 @@
                                     <div class="card-body">
                                         <h5 class="card-title">Juego: {{ juego.nombre }}</h5>
                                         <p class="card-text"><small class="text-body-secondary">Precio: ${{ juego.precio }} cantidad{{juego.count}}</small></p>
-                                        <a href="{% url 'carrito_del' correo=user.username idjuego=juego.idjuego %}" style="font-style: italic; text-decoration: none;">Eliminar</a>
+                                        <a href="#" onclick="Eliminarproducto('{{ carrito.correo_cliente }}', '{{ juego.idjuego }}')" style="font-style: italic; text-decoration: none;">Eliminar</a>
+
                                     </div>
                                 </div>
                             </div>

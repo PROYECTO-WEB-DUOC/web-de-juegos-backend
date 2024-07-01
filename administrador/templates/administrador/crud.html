@@ -3,11 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Crud clientes</title>
     {% load static %}
     <link rel="stylesheet" href="{% static  'css/juegos.css'%}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+  <script>
+    function Eliminarproducto(id){
+       console.log(id)
+        Swal.fire({
+            "title":"¿Estas Seguro de eliminar este cliente?",
+             "text":"",
+            "icon":"question",
+            "showCancelButton":true,
+            "cancelButtonText":"Cancelar",
+            "confirmButtonText":"Eliminar",
+            "confirmButtonColor":"#dc3545"
+        })
+        .then(function(result){
+            if(result.isConfirmed){
+                window.location.href = "/administrador/clientes_del/" + id  ;
+
+
+            }
+        })
+    }
+  
+</script>
   <button><a href="{% url 'admin' %}"> volver</a></button>
     <h1>Clientes</h1>
   
@@ -29,8 +53,8 @@
     <td id="email">{{cliente.email}}
       <td id="contraseña">{{cliente.contraseña}} </td>
       <td> <a href="{% url 'crearc' %}">Agregar</a></td>
-    <td><a href="{% url 'clientes_del' pk=cliente.rut %}">Eliminar</a></td>
-    <td> <a id="btn" href="{% url 'clientes_edit' pk=cliente.rut %}">Modificar</a></td>
+    <td><a href="#" onclick="Eliminarproducto('{{ cliente.email }}')" >Eliminar</a></td>
+    <td> <a id="btn" href="{% url 'clientes_edit' pk=cliente.rut %}"  >Modificar</a></td>
   </tr>
     {% endfor %}
     
@@ -48,6 +72,17 @@
     
     <input style="position: relative; top: 190px; left: 50px;" type="submit" name="opcion" value="Actualizar">
   </form>
+  {% if messages %}
+            {% for m in messages%}
+                <script>
+                    Swal.fire({
+                        "title":"{{m}}",
+                        "text":"",
+                        "icon":"success"
+                    })
+                </script>
+            {% endfor %}
+        {% endif %}
   
   <a style="position: relative; top: 190px; left: 100px;" href="{% url 'crud'%}">Volver</a>
   {% endif %}

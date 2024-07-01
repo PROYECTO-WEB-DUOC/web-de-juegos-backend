@@ -1,45 +1,71 @@
 
 body{
-    background-color: #333;
+    background: linear-gradient(rgb(40, 40, 40), rgb(56, 56, 56));
 }
-form {
-    max-width: 400px;
-    width: 100%;
-    margin-top: 1000px;
-    margin-bottom: 100px;
+
+/* style.css */
+
+.login {
+    min-width: 1000px;
+    
     margin: auto;
-    background-color: #f7f7f7;
-
-}
-form input[type="text"],
-form input[type="password"] {
-    width: 100%;
+    padding: 20px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-
+    background-color: #f9f9f9;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+}
+@media only screen and (max-width: 1030px){
+    .login {
+      min-width: 300px;
+  }}
+.form {
+    margin-bottom: 15px;
 }
 
+.form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
 
-form button[type="submit"] {
+.form input {
     width: 100%;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-form button[type="submit"]:hover {
+.btn2 {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn2:hover {
     background-color: #0056b3;
 }
 
-
-h1 {
-    text-align: center;
+.social {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
     color: #333;
-    margin-bottom: 32px;
-    font-size: 32px;
 }
 
-
+.social img {
+    vertical-align: middle;
+    margin-right: 5px;
+}

@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="{% static  'css/admini.css'%}">
 </head>
 <body>
-    
-    <a href="{%url 'crud'%}" > crud clientes</a>
-    <a href="{% url 'crud_juegos'%}"> crud juegos </a>
+    <a href="{%url 'index'%}" > Volver a la Web</a>
+    <a href="{%url 'crud'%}" > Clientes</a>
+    <a href="{% url 'crud_juegos'%}"> Juegos </a>
+    <a href="{% url 'crud_carrusel'%}"> Carrusel </a>
+    <a href="{% url 'crud_carrito'%}"> Carrito de Clientes </a>
 </body>
 </html>
