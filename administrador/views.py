@@ -50,16 +50,16 @@ def clientes_edit(request,pk):
                     mensaje='DATOS ACTUALIZADOS'
                     messages.success(request,mensaje)
                     context = {'cliente': cliente, 'form': form,  'mensaje': mensaje}
-                    return render(request,'administrador/crud.html',context)  
+                    return render(request,'administrador/cliente_edit.html',context)  
                 else:
                     print("error")
                     context = {'cliente': cliente, 'form': form, 'form_errors': form.errors, 'formuser_errors': formuser.errors}
                     print(context)
-                    return render(request,'administrador/crud.html',context)  
+                    return render(request,'administrador/cliente_edit.html',context)  
         else:
                  form=ClienteForm(instance=cliente)
                  context={'cliente':cliente,'form':form}
-                 return render(request,'administrador/crud.html',context)
+                 return render(request,'administrador/cliente_edit.html',context)
 
 
 #crus juegos general
@@ -118,13 +118,13 @@ def juegos_edit(request,pk):
         if request.method == 'POST': 
                 print("es un post")
                 formulario=Juegos_Form(request.POST,request.FILES, instance=juegos)
-                if formulario.is_valid:
+                if formulario.is_valid():
                     formulario.save()
                     print("datos actualizados")
                     mensaje='DATOS ACTUALIZADOS'
                     messages.success(request,mensaje)
                     context={'mensaje':mensaje}
-                return render(request,'administrador/juegos_edit.html',context)
+                return redirect('juegos_edit', pk=pk)
 
         return render(request,'administrador/juegos_edit.html',context)
 
@@ -190,12 +190,12 @@ def carrusel_edit(request,nombre):
         if request.method == 'POST': 
                 print("es un post")
                 formulario=CarruselForm(request.POST,request.FILES, instance=carrusel)
-                if formulario.is_valid:
+                if formulario.is_valid():
                     formulario.save()
                     print("datos actualizados")
                     mensaje='DATOS ACTUALIZADOS'
                     messages.success(request,mensaje)
                     context={'mensaje':mensaje}
-                return render(request,'administrador/carrusel_edit.html',context)
+                return redirect('carrusel_edit', nombre=nombre)
 
         return render(request,'administrador/carrusel_edit.html',context)

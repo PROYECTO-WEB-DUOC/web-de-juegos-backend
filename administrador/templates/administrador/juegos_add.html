@@ -3,34 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
     <title>Document</title>
     {% load static %}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    <button><a href="{% url 'admin' %}"> volver</a></button>
-    <table style="border: 1px solid black;">
-        {% if juegos %}
-        <th style="border: 1px solid black;">id</th>
-        <th style="border: 1px solid black;">NOMBRE</th>
-        <th style="border: 1px solid black;">puntuacion</th>
-        <th style="border: 1px solid black;">imagen</th>
-        <th style="border: 1px solid black;">precio</th>
-        <th style="border: 1px solid black;">Categoria</th>
-        <th style="border: 1px solid black;">Video</th>
-        <th style="border: 1px solid black;">Estreno</th>
-      
-        
-    {% endif %}
+   
 
 
 
 <form action="" method="POST" enctype="multipart/form-data" >
           {% csrf_token %}
           {{ form.as_p }}
-          <input style="position: relative; top: 190px; left: 50px;" type="submit" name="opcion" value="Agregar"> 
-         <a style="position: relative; top: 190px; left: 100px;" href="{% url 'crud_juegos' %}">Volver</a>
+          <div style="text-align: right;">
+            <input type="submit" name="opcion" value="Agregar">
+            <a class="btn btn-primary" href="{% url 'crud_juegos' %}">Volver</a>
+        </div>
 
 </form>
 

@@ -104,9 +104,11 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',  
-    'social_django'
+    'social_django',
+    'crispy_forms',
 ]
 
+CRISPY_TEMPLATE_PACK= 'bootstrap4'
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
 MIDDLEWARE = [

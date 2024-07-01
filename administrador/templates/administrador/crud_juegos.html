@@ -3,79 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/juegos.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Juegos</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-  <script>
-     function Eliminarproducto(id){
-       console.log(id)
-        Swal.fire({
-            "title":"¿Estas Seguro de eliminar este cliente?",
-             "text":"",
-            "icon":"question",
-            "showCancelButton":true,
-            "cancelButtonText":"Cancelar",
-            "confirmButtonText":"Eliminar",
-            "confirmButtonColor":"#dc3545"
-        })
-        .then(function(result){
-            if(result.isConfirmed){
-                window.location.href = "/administrador/juegos_del/" + id  ;
+    <script>
+        function Eliminarproducto(id) {
+            console.log(id);
+            Swal.fire({
+                title: "¿Estás seguro de eliminar este juego?",
+                text: "",
+                icon: "question",
+                showCancelButton: true,
+                cancelButtonText: "Cancelar",
+                confirmButtonText: "Eliminar",
+                confirmButtonColor: "#dc3545"
+            }).then(function(result) {
+                if (result.isConfirmed) {
+                    window.location.href = "/administrador/juegos_del/" + id;
+                }
+            });
+        }
+    </script>
 
+     <a href="{% url 'admin' %}" class="btn btn-primary">Volver</a>
+    <h1 style="text-align: center;">Juegos</h1>
 
-            }
-        })
-    }
-  </script>
-    <button><a href="{% url 'admin' %}"> volver</a></button>
-    <h1>Juegos </h1>
-  
-    <button><a href="{% url 'juegos_add' %}">Agregar</a></button>
-    <table style="border: 1px solid black;">
-        {% if juegos %}
-        <th style="border: 1px solid black;">id</th>
-        <th style="border: 1px solid black;">NOMBRE</th>
-        <th style="border: 1px solid black;">puntuacion</th>
-        <th style="border: 1px solid black;">imagen</th>
-        <th style="border: 1px solid black;">precio</th>
-        <th style="border: 1px solid black;">Categoria</th>
-        <th style="border: 1px solid black;">Video</th>
-        <th style="border: 1px solid black;">Estreno</th>
-        {% for juegoss in juegos %}
-      <tr>
-        <td id="nombre">{{juegoss.idjuego}}
-        <td id="nombre">{{juegoss.nombre}}
-        <td id="puntuacion">{{juegoss.puntuacion}}
-        <td id="imagen"><img src="{{juegoss.imagen.url}}" style="width: 30px;"  alt=""> 
-        <td id="precio">{{juegoss.precio}}
-        <td id="categoria">{{juegoss.id_categoria}}
-        <td id="categoria">{{juegoss.video}}
-        <td id="estreno">{{juegoss.estreno}}
-       
-        <td><a href="#" onclick="Eliminarproducto('{{juegoss.idjuego}}')">Eliminar</a></td>
-        <td><a href="{% url 'juegos_edit' pk=juegoss.idjuego %}">Modificar</a></td>
-      </tr>
-        {% endfor %}
-        
+    <a href="{% url 'juegos_add' %}" class="btn btn-success">Agregar Nuevo Juego</a>
+    <br>
+    <br>
+    <div class="container-fluid">  
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Puntuación</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Categoría</th>
+                    <th scope="col">Video</th>
+                    <th scope="col">Estreno</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for juego in juegos %}
+                <tr>
+                    <td>{{ juego.idjuego }}</td>
+                    <td>{{ juego.nombre }}</td>
+                    <td>{{ juego.puntuacion }}</td>
+                    <td><img src="{{ juego.imagen.url }}" style="width: 50px;" alt=""></td>
+                    <td>{{ juego.precio }}</td>
+                    <td>{{ juego.id_categoria }}</td>
+                    <td>{{ juego.video }}</td>
+                    <td>{{ juego.estreno }}</td>
+                    <td>
+                       <a href="#" onclick="Eliminarproducto('{{ juego.idjuego }}')" class="btn btn-danger">Eliminar</a>
+                       <a href="{% url 'juegos_edit' pk=juego.idjuego %}" class="btn btn-primary">Modificar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% if juegos_edit %}
+    <div class="container">
+        <h2>Modificar Juego</h2>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Actualizar" class="btn btn-primary">
+        </form>
+    </div>
     {% endif %}
-    
-    <!--modificar juego pc-->
-{% if juegos_edit %}
-    <form action="" method="POST" enctype="multipart/form-data" >
-        {% csrf_token %}
-        {{ form.as_p }}
-        
 
-        
-       <input type="submit" value="Actualizar">
-      </form>
-      
-{% endif %}
-      <!--agregar juego pc-->
-   
-
- 
 </body>
 </html>

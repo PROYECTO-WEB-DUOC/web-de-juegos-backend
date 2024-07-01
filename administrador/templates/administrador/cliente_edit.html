@@ -11,9 +11,9 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-  
-   
-
+    
+    
+    
 
 
 <form action="" method="POST" enctype="multipart/form-data" >
@@ -21,19 +21,19 @@
           {{ form.as_p }}
           <div style="text-align: right;">
             <input type="submit" name="opcion" value="Agregar">
-            <a class="btn btn-primary" href="{% url 'crud_carrusel' %}">Volver</a>
+            <a href="{% url 'crud' %}">Volver</a>
         </div>
 
 </form>
 
 {% if messages %}
-{% for message in messages %}
-<script>
-    Swal.fire({
-        "title": "{{ message }}",
-        "text": "",
-        "icon": "{% if message.tags == 'success' %}success{% elif message.tags == 'error' %}error{% endif %}"
-        })
-</script>
-{% endfor %}
-{% endif %}
+         {% for m in messages%}
+             <script>
+                 Swal.fire({
+                     "title":"{{m}}",
+                     "text":"",
+                     "icon":"success"
+                 })
+             </script>
+         {% endfor %}
+     {% endif %} 
