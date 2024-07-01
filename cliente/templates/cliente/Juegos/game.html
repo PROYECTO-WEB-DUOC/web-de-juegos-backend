@@ -37,19 +37,41 @@
     <br>
     <br>
     <h3 >CLP {{juegos.precio}}$</h3>
-    
+    {% if user.is_authenticated %}
     <button type="button" id="preciogow"  class="btn btn-primary-2"> <a href=" {% url 'carrito_add' correo=user.username idjuego=juegos.idjuego%}" style="color: #fff; text-decoration: none;">Agregar al carrito</a> </button>
-   
+    {% if messages %}
+            {% for m in messages%}
+                <script>
+                    Swal.fire({
+                        "title":"{{m}}",
+                        "text":"",
+                        "icon":"success"
+                    })
+                </script>
+            {% endfor %}
+        {% endif %}
+    {% else %}
+    <button type="button" id="preciogow"  class="btn btn-primary-2"> <a href="{% url 'login' %}" style="color: #fff; text-decoration: none;">Agregar al carrito</a> </button>
+    {% endif %}
   </div>
 </div>
 <!--info juego-->
 
   <div class="container-info">
+  {% if juegos.online == True %}
+  <p> <img src="{% static 'cliente/img/mandopng.png'%}" width="40px" style="margin-right: 5px;" alt="">Juego Online Activado</p>
+  {% else %}
   <p> <img src="{% static 'cliente/img/mandopng.png'%}" width="40px" style="margin-right: 5px;" alt="">Juego Offline Activado</p>
+  {% endif %}
+  {% if juegos.cantidad_jugadores == 1%}
   <p> <img src="{% static 'cliente/img/user_icon_149851.png'%}" width="40px"  alt="">1 Jugador</p>
-  <p> <img src="{% static 'cliente/img/mAture 17.jpg'%}" width="40px" alt=""> Derramamiento de Sangre</p>
+  {% else%}
+  <p> <img src="{% static 'cliente/img/user_icon_149851.png'%}" width="40px"  alt="">{{juegos.cantidad_jugadores}} Jugadores</p>
+  {% endif %}
+  {% if juegos.mas18 == True%}
+  <p> <img src="{% static 'cliente/img/mAture 17.jpg'%}" width="40px" alt=""> +18</p>
   
-   
+  {% endif %}
   
   </div> 
 

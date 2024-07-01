@@ -13,7 +13,7 @@
 {% block contenido %}
 
 <div class="container">
-        <h2 class="cuadrado">Registrarse</h2>
+        <h2 class="cuadrado" style="font-family:Georgia, 'Times New Roman', Times, serif;">Registrarse</h2>
         <form action="crearc"  method="POST" enctype="multipart/form-data" class="registro-form">
             {% csrf_token %}
             
@@ -51,9 +51,21 @@
                     {% endfor %}
                  
             </select></pre>
-            <input type="submit" id="enviar"  value="Registrarse ">
-       
+            
+            <button type="submit"id="enviar" value="Registrarse" class="btn btn-success">Registrarse</button>
         </form>
+        {% if messages %}
+    {% for message in messages %}
+        <script>
+            Swal.fire({
+                "title": "{{ message }}",
+                "text": "",
+                "icon": "{% if message.tags == 'success' %}success{% elif message.tags == 'error' %}error{% endif %}"
+            })
+        </script>
+    {% endfor %}
+{% endif %}
+
     </div>
 
     

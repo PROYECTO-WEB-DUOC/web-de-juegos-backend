@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+
+MESSAGE_STORAGE= "django.contrib.messages.storage.cookie.CookieStorage"
 AUTHENTICATION_BACKENDS = [
     
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -40,7 +42,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 SITE_ID=1
 #login
-LOGIN_REDIRECT_URL='login'
+LOGIN_REDIRECT_URL='index'
 LOGOUT_REDIRECT_URL='login'
 
 

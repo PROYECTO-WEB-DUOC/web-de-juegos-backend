@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  
+    <button><a href="{% url 'admin' %}"> volver</a></button>
+    <h1>Carrito de Clientes </h1>
+  
+    
+    <table style="border: 1px solid black;">
+        <thead>
+            <tr>
+                <th style="border: 1px solid black;">ID</th>
+                <th style="border: 1px solid black;">Email del Cliente</th>
+                <th style="border: 1px solid black;">Juegos</th>
+                <th style="border: 1px solid black;">Precio Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if carrito %}
+                {% for carr in carrito %}
+                    <tr>
+                        <td style="border: 1px solid black;">{{ carr.idcarrito }}</td>
+                        <td style="border: 1px solid black;">{{ carr.correo_cliente }}</td>
+                        <td style="border: 1px solid black;">
+                            {% for juego in carr.juegos.all %}
+                                <img src="{{ juego.imagen.url }}" alt="{{ juego.nombre }}" style="width: 50px; height: 50px;">
+                            {% endfor %}
+                        </td>
+                        <td style="border: 1px solid black;">{{ carr.precio_total }}</td>
+                    </tr>
+                {% endfor %}
+          
+            {% endif %}
+        </tbody>
+    </table>
+    
+   
+
+
+ 
+</body>
+</html>

@@ -17,18 +17,46 @@
     
 {% block contenido %}
 
-    <h1>login</h1>
+   
+<form action="" method="post" class="login">
+    {% csrf_token %}
+    
+    <div class="form">
+        {{ form.username.label_tag }}
+        {{ form.username }}
+        {% for error in form.username.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+    </div>
+    
+    <div class="form">
+        {{ form.password.label_tag }}
+        {{ form.password }}
+        {% for error in form.password.errors %}
+            <span>{{ error }}</span>
+        {% endfor %}
+    </div>
+    
+    {% if form.non_field_errors %}
+        <div class="form">
+            {% for error in form.non_field_errors %}
+                <span >{{ error }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    <button type="submit" class="btn2">Iniciar sesión</button>
+    
+    <a href="{% provider_login_url provider.id %}" class="social">
+        <img src="{% static 'cliente/img/logo.png' %}" width="30" height="30" alt=""> Iniciar sesión con Google
+    </a>
+    
+    <a href="{% url 'social:begin' 'facebook' %}" class="social">
+        <img src="{% static 'cliente/img/facebook.png' %}" width="30" height="30" alt=""> Iniciar sesión con Facebook
+    </a>
+</form>
 
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ form.as_p}}
-        
-        <button type="submit"> iniciar sesion</button>
-        <a href="{% provider_login_url provider.id %}">Iniciar sesión con Google</a>
 
-
-        <a href="{% url 'social:begin' 'facebook' %}">Iniciar sesion con facebook</a>
-    </form>
 
     
     

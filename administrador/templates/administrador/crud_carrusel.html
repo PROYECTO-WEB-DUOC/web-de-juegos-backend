@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  
+    <button><a href="{% url 'admin' %}"> volver</a></button>
+    <h1>Carrusel de juegos para el 2025 </h1>
+  
+    
+    <table style="border: 1px solid black;">
+        <thead>
+            <tr>
+                <th style="border: 1px solid black;">Nombre</th>
+                <th style="border: 1px solid black;">Imagen</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% if carrusel %}
+                {% for carr in carrusel%}
+                    <tr>
+                        <td style="border: 1px solid black;">{{ carr.nombre }}</td>
+                        <td style="border: 1px solid black;"><img src="{{ carr.imagen.url}}" width="150px" alt=""></td>
+                        <td><a href="{% url 'carrusel_del' nombre=carr.nombre %}"  >Eliminar</a></td>
+                        <td> <a id="btn" href="{% url 'carrusel_edit' nombre=carr.nombre%}"  >Modificar</a></td>
+                {% endfor %}
+                
+            {% endif %}
+        </tbody>
+    </table>
+    <a href="{% url 'carrusel_add' %}">Agregar</a>
+   
+
+    
+  
+
+
+ 
+</body>
+</html>
