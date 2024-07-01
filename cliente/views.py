@@ -125,6 +125,8 @@ def carrito_add(request,correo,idjuego):
         carrito=Carrito.objects.get(correo_cliente=correo)
         juegos=Juegos.objects.get(idjuego = idjuego)
         
+        
+        
         carrito.juegos.add(juegos)
         carrito.actualizar_precio_total()
         carrito.save()    
@@ -147,6 +149,4 @@ def carrito_del(request,correo,idjuego):
 
 
 
-from django.shortcuts import get_object_or_404, redirect, render
-from .models import Carrito, Juegos
 

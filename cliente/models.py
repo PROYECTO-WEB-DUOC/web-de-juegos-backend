@@ -72,4 +72,3 @@ class Carrito(models.Model):
         return str(self.idcarrito)
     
 
-
