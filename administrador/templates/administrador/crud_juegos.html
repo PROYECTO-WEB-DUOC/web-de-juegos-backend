@@ -52,7 +52,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for juego in juegos %}
+                {% for juego in entity %}
                 <tr>
                     <td>{{ juego.idjuego }}</td>
                     <td>{{ juego.nombre }}</td>
@@ -60,7 +60,7 @@
                     <td><img src="{{ juego.imagen.url }}" style="width: 50px;" alt=""></td>
                     <td>{{ juego.precio }}</td>
                     <td>{{ juego.id_categoria }}</td>
-                    <td>{{ juego.video }}</td>
+                    <td><video src="{{ juego.video.url }}" width="100px"></video></td>
                     <td>{{ juego.estreno }}</td>
                     <td>
                        <a href="#" onclick="Eliminarproducto('{{ juego.idjuego }}')" class="btn btn-danger">Eliminar</a>
@@ -70,6 +70,9 @@
                 {% endfor %}
             </tbody>
         </table>
+        <div>
+            {% include 'administrador/paginator.html'%}
+        </div>
     </div>
 
     {% if juegos_edit %}

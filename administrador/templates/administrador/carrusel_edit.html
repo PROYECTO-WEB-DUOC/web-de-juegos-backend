@@ -19,7 +19,7 @@
 <form action="" method="POST" enctype="multipart/form-data" >
           {% csrf_token %}
           {{ form.as_p }}
-          <input style="position: relative; top: 190px; left: 50px;" type="submit" name="opcion" value="Agregar"> 
+          <input style="position: relative; top: 190px; left: 50px;" type="submit" name="opcion" value="Actualizar"> 
           <a style="position: relative; top: 190px; left: 100px;" href="{% url 'crud_carrusel' %}">Volver</a>
 
 </form>

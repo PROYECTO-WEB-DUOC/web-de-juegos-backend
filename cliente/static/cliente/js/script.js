@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
 
-    const fecha_juego = new Date('06/13/2024 0:01 AM');
+    const fecha_juego = new Date('10/06/2025 0:01 AM');
 
     const dias = document.querySelector('#days');
     const horas = document.querySelector('#hours');

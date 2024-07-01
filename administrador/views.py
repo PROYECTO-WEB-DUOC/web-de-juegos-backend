@@ -4,7 +4,8 @@ from cliente.models import  Cliente,Juegos,Carrito,Carrousel_2025
 from cliente.forms import ClienteForm,Juegos_Form,UserForm,CarruselForm
 from django.contrib import messages
 from django.shortcuts import redirect
-
+from django.core.paginator import Paginator
+from django.http import Http404
 # Create your views here.
 def admin(request):
     context={}
@@ -65,7 +66,13 @@ def clientes_edit(request,pk):
 #crus juegos general
 def crud_juegos(request):
     juegos=Juegos.objects.all()
-    context={'juegos':juegos}
+    page=request.GET.get('page',1)
+    try:
+        paginator=Paginator(juegos,5)
+        juegos=paginator.page(page)
+    except:
+        raise Http404
+    context={'entity':juegos,'paginator':paginator}
     return render(request, 'administrador/crud_juegos.html', context)
 
 
