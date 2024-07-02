@@ -114,12 +114,13 @@ def game(request,idjuego):
 
 #carrito
 @login_required
-def carrito(request,correo):
-    
-    carrito=Carrito.objects.get(correo_cliente=correo)
-    carritos=Carrito.objects.all()
-    context={'carrito':carrito}
+
+def carrito(request):
+    correo = request.user.email
+    carrito = get_object_or_404(Carrito, correo_cliente=correo)
+    context = {'carrito': carrito}
     return render(request, 'cliente/Juegos/carrito.html', context)
+
 
 
 
