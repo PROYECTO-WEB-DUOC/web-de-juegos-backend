@@ -40,6 +40,9 @@ class Juegos(models.Model):
     def __str__(self):
         return str(self.nombre)
 
+    def cantidad_en_carrito(self):
+        return sum(juego.cantidad for juego in self.cantjuegos_set.all())
+
 class Categoria_juegos(models.Model):
     idcategoria = models.CharField(primary_key=True,max_length=10)
     nombre=models.CharField(max_length=100)
@@ -58,17 +61,23 @@ class Carrousel_2025 (models.Model):
 class Carrito(models.Model):
     idcarrito=models.AutoField(primary_key=True)
     correo_cliente=models.EmailField(unique=True, max_length=100, blank=True, null=False)
-    juegos  =models.ManyToManyField('Juegos' ,null=True,default=None)
+    juegos = models.ManyToManyField(Juegos, through='CantJuegos')
     precio_total = models.CharField(max_length=20 ,null=True,default=0)
 
     def actualizar_precio_total(self):
-        total = sum(float(juego.precio) for juego in self.juegos.all())
+        total = sum(float(item.juego.precio) * item.cantidad for item in self.cantjuegos_set.all())
         self.precio_total = str(total)
         self.save()
     
-    
+    def total_juegos(self):
+        return sum(item.cantidad for item in self.cantjuegos_set.all())
 
     def __str__(self):
         return str(self.idcarrito)
     
 
+class CantJuegos(models.Model):
+    carrito = models.ForeignKey('Carrito', on_delete=models.CASCADE)
+    juego = models.ForeignKey('Juegos', on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField(default=1)
+    

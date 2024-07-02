@@ -6,6 +6,13 @@ from django.contrib import messages
 from django.shortcuts import redirect
 from django.core.paginator import Paginator
 from django.http import Http404
+from django import template
+# templatetags/custom_filters.py
+
+
+
+
+
 # Create your views here.
 def admin(request):
     context={}

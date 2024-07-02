@@ -34,6 +34,7 @@
                         <td style="border: 1px solid black;">
                             {% for juego in carr.juegos.all %}
                                 <img src="{{ juego.imagen.url }}" alt="{{ juego.nombre }}" style="width: 50px; height: 50px;">
+                                <span>{{juego.cantidad_en_carrito}}</span>
                             {% endfor %}
                         </td>
                         <td style="border: 1px solid black;">{{ carr.precio_total }}</td>

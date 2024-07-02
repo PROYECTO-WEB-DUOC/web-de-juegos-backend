@@ -1,14 +1,16 @@
 from django.shortcuts import render
-from .models import  Cliente,Genero,Juegos,Categoria_juegos,Carrousel_2025,Carrito
+from .models import  Cliente,Genero,Juegos,Categoria_juegos,Carrousel_2025,Carrito,CantJuegos
 from .forms import ClienteForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.forms import ValidationError
-
-
+from django.shortcuts import get_object_or_404
 # Create your views here.
+
+
+
 
 def index(request):
     carrousel=Carrousel_2025.objects.all();
@@ -121,28 +123,39 @@ def carrito(request,correo):
 
 
 
-def carrito_add(request,correo,idjuego):
-        carrito=Carrito.objects.get(correo_cliente=correo)
-        juegos=Juegos.objects.get(idjuego = idjuego)
-        
-        
-        
-        carrito.juegos.add(juegos)
-        carrito.actualizar_precio_total()
-        carrito.save()    
-        mensaje = 'Juego añadido al carrito'
-        messages.success(request,mensaje)
-        
-        return redirect(request.META.get('HTTP_REFERER', 'cliente/Juegos/game.html'))
-   
-def carrito_del(request,correo,idjuego):
- 
-    carrito=Carrito.objects.get(correo_cliente=correo)
-    juegos=Juegos.objects.get(idjuego = idjuego)
-    carrito.juegos.remove(juegos)
+def carrito_add(request, correo, idjuego):
+    carrito = Carrito.objects.get(correo_cliente=correo)
+    juego =Juegos.objects.get( idjuego=idjuego)
+    cant_juego, created = CantJuegos.objects.get_or_create(carrito=carrito, juego=juego)
+    if not created:
+        cant_juego.cantidad += 1
+        cant_juego.save()
     carrito.actualizar_precio_total()
+    carrito.save()
+    
+    mensaje = 'Juego añadido al carrito'
+    messages.success(request, mensaje)
+    
+    return redirect(request.META.get('HTTP_REFERER', 'cliente/Juegos/game.html'))
+
+
+def carrito_del(request, correo, idjuego):
+    carrito = Carrito.objects.get(correo_cliente=correo)
+    juego =Juegos.objects.get( idjuego=idjuego)
+    cant_juego = CantJuegos.objects.get(carrito=carrito, juego=juego)
+
+    if cant_juego.cantidad > 1:
+        cant_juego.cantidad -= 1
+        cant_juego.save()
+    else: 
+        cant_juego.delete()
+    
+    
+    carrito.actualizar_precio_total()
+    carrito.save()
     
     return redirect(request.META.get('HTTP_REFERER', '/'))
+
         
 
 
