@@ -15,12 +15,12 @@
     <div class="juntar"> <!-- CARDS AL LADO DE Otra-->
         {% for juegos in juegoss %}
         {%if juegos.id_categoria.idcategoria == '3' %}
-        <div class="card mr-3" style="width: 18rem;">
+        <div class="card mr-3" style="width: 22rem;">
             <img loading="lazy" src="{{juegos.imagen.url}} " class="card-img-top" alt="...">
             <div class="card-body">
                 <p class="card-text" style="text-decoration: none;">{{juegos.nombre}}</p>
                 <hr>
-                <p class="card-text" style="text-decoration: none;">{{juegos.puntuacion}}</p>
+                <p class="card-text" style="text-decoration: none;">Puntuacion: {{juegos.puntuacion}}</p>
             </div>
             <!--Opcion comprar-->
             <div class="option-shop">

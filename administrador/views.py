@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from cliente.models import  Cliente,Juegos,Carrito,Carrousel_2025
-from cliente.forms import ClienteForm,Juegos_Form,UserForm,CarruselForm
+from cliente.models import  Cliente,Juegos,Carrito,Carrousel_2025,JuegosPagados
+from cliente.forms import ClienteForm,Juegos_Form,UserForm,CarruselForm,PeticionesForm
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.core.paginator import Paginator
@@ -213,3 +213,10 @@ def carrusel_edit(request,nombre):
                 return redirect('carrusel_edit', nombre=nombre)
 
         return render(request,'administrador/carrusel_edit.html',context)
+
+
+#peticiones
+def peticiones(request):
+    pet=JuegosPagados.objects.all()
+    context={'pet':pet}
+    return render(request, 'administrador/peticiones.html', context)

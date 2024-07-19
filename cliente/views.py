@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import  Cliente,Genero,Juegos,Categoria_juegos,Carrousel_2025,Carrito,CantJuegos
+from .models import  Cliente,Genero,Juegos,Categoria_juegos,Carrousel_2025,Carrito,CantJuegos,JuegosPagados,CantJuegosPagados
 from .forms import ClienteForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -7,11 +7,11 @@ from django.contrib import messages
 from django.shortcuts import redirect
 from django.forms import ValidationError
 from django.shortcuts import get_object_or_404
+from django.conf import settings
+import mercadopago
+
+
 # Create your views here.
-
-
-
-
 def index(request):
     carrousel=Carrousel_2025.objects.all();
     juegos=Juegos.objects.all()
@@ -130,14 +130,18 @@ def carrito_add(request, correo, idjuego):
     cant_juego, created = CantJuegos.objects.get_or_create(carrito=carrito, juego=juego)
     if not created:
         cant_juego.cantidad += 1
+        
         cant_juego.save()
+    
     carrito.actualizar_precio_total()
+    
     carrito.save()
     
     mensaje = 'Juego añadido al carrito'
-    messages.success(request, mensaje)
     
-    return redirect(request.META.get('HTTP_REFERER', 'cliente/Juegos/game.html'))
+    messages.success(request, mensaje)
+    juego.del_stock()
+    return redirect(request.META.get('HTTP_REFERER', '/'))
 
 
 def carrito_del(request, correo, idjuego):
@@ -148,10 +152,13 @@ def carrito_del(request, correo, idjuego):
     if cant_juego.cantidad > 1:
         cant_juego.cantidad -= 1
         cant_juego.save()
-    else: 
+        
+    else:
+        
         cant_juego.delete()
+        
     
-    
+    juego.add_stock() 
     carrito.actualizar_precio_total()
     carrito.save()
     
@@ -159,8 +166,54 @@ def carrito_del(request, correo, idjuego):
 
         
 
+#PAYMENT
+def payment(request):
+    correo = request.user.email
+    carrito = get_object_or_404(Carrito, correo_cliente=correo)
+    sdk = mercadopago.SDK(settings.MERCADO_PAGO_ACCESS_TOKEN)
+    items = []
+    for item in carrito.cantjuegos_set.all():
+        items.append({
+            "title": str(item.juego.nombre), 
+            "quantity": int(item.cantidad),  
+            "unit_price": int(item.juego.precio)  
+        })
+    preference_data = {
+        "items": items,
+        "back_urls": {
+            "success": "http://localhost:8000/cliente/Juegos/payment_aprobado", 
+            "failure": "http://localhost:8000/cliente/index",    
+            "pending": "http://localhost:8000/pending"    
+        },
+        
+    }
+    
+    preference_response = sdk.preference().create(preference_data)
+    preference = preference_response["response"]
+   
+    return redirect(preference["init_point"])
 
-
-
-
-
+def payment_aprobado(request):
+    collection_status = request.GET.get('collection_status')
+    correo = request.user.email
+   
+    if collection_status == 'approved':
+        carrito = Carrito.objects.get(correo_cliente=correo)
+        #agregar peticion a tabla
+        peticion=JuegosPagados.objects.create(
+            correo_cliente=carrito.correo_cliente,
+            precio_total=carrito.precio_total
+         )
+        for cantjuego in carrito.cantjuegos_set.all():
+            CantJuegosPagados.objects.create(
+                juegos_pagados=peticion,
+                juego=cantjuego.juego,
+                cantidad=cantjuego.cantidad
+            )
+        peticion.save();
+        #ELIMINACION DE CARRITO
+        carrito.cantjuegos_set.all().delete()
+        carrito.precio_total=0 
+        carrito.save()
+        
+        return redirect('/cliente/Juegos/carrito')

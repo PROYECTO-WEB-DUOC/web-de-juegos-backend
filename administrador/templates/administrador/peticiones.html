@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/juegos.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  
+    <a href="{% url 'admin' %}" class="btn btn-primary"> volver</a>
+    <h1 style="text-align: center;">Juegos Pagados </h1>
+    
+    <br>
+    <br>
+<div class="container-fluid">
+    <table style="border: 1px solid black;">
+        <thead>
+            <tr>
+                <th style="border: 1px solid black;">ID</th>
+                <th style="border: 1px solid black;">Correo Cliente</th>
+                <th style="border: 1px solid black;">Juegos Solicitados</th>
+                <th style="border: 1px solid black;">Precio Pagado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if pet %}
+                {% for p in pet%}
+                    <tr>
+                        <td style="border: 1px solid black;">{{ p.idpeticion }}</td>
+                        <td style="border: 1px solid black;">{{ p.correo_cliente}}</td>
+                        <td style="border: 1px solid black;">
+                            {% for cantjuego in p.cantjuegospagados_set.all %}
+                                {{ cantjuego.juego.nombre }} ({{ cantjuego.cantidad }})
+                            {% endfor %}
+                        </td>
+                        <td style="border: 1px solid black;">{{ p.precio_total }}</td>
+                         
+                {% endfor %}
+                
+            {% endif %}
+        </tbody>
+    </table>
+    
+</div>  
+
+    
+  
+
+
+ 
+</body>
+</html>

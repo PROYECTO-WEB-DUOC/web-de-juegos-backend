@@ -43,7 +43,10 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID=1
 #login
 LOGIN_REDIRECT_URL='index'
+
 LOGOUT_REDIRECT_URL='login'
+#mercado pago
+MERCADO_PAGO_ACCESS_TOKEN = 'APP_USR-3592455897198822-071820-820b4be289d78ec53472fae4f11fe5c4-1908745354    '
 
 
 #facebook
@@ -108,6 +111,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',  
     'social_django',
     'crispy_forms',
+    
 ]
 
 CRISPY_TEMPLATE_PACK= 'bootstrap4'

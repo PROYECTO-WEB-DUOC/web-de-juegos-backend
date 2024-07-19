@@ -14,7 +14,6 @@
 <script src="{% static 'cliente/js/script.js'%}"></script>
 <script src="{% static 'cliente/js/cambio-fondo.js'%}"></script>
 <script src="{% static 'cliente/js/api.js'%}"></script>
-
 <script>
     function Eliminarproducto(id,correo){
         Swal.fire({
@@ -80,13 +79,17 @@
                                 <h5 class="card-title">Precio Total de Juegos</h5>
                                 <p class="card-text">${{ carrito.precio_total  }}</p>
                             </div>
-                            <div class="card-header"><button type="button" class="btn btn-success">Comprar</button></div>
+                            <div class="card-header">
+                                <a href="{% url 'payment' %}" class="btn btn-primary">Comprar</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+       
     {% endif %}
 {% endif %}
+
 
 {% endblock %}

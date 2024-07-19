@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Cliente,Juegos,Carrousel_2025
+from .models import Cliente,Juegos,Carrousel_2025,JuegosPagados
 from django.contrib.auth.models import User
 from django.forms import ValidationError
 class ClienteForm(forms.ModelForm):
@@ -31,6 +31,13 @@ class UserForm(forms.ModelForm):
 class CarruselForm(ModelForm):
     class Meta:
         model=Carrousel_2025
+        fields='__all__'
+
+
+
+class PeticionesForm(ModelForm):
+    class Meta:
+        model=JuegosPagados
         fields='__all__'
 
 

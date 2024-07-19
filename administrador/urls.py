@@ -18,6 +18,7 @@ urlpatterns = [
     path('carrusel_add',views.carrusel_add, name='carrusel_add'),
     path('carrusel_del/<str:nombre>',views.carrusel_del, name='carrusel_del'),
     path('carrusel_edit/<str:nombre>',views.carrusel_edit, name='carrusel_edit'),
+     path('peticiones',views.peticiones, name='peticiones'),
 ]   
 
 if settings.DEBUG:

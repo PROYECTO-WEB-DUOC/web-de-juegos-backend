@@ -28,17 +28,19 @@
   <div class="card-body">
     <p class="card-text-1">Puntuacion : {{juegos.puntuacion}}</p>
     <p class="card-text-1">
-    <img src="{% static 'cliente/img/estrella.png'%}" width="40px" style="margin-bottom: 5px;" alt=""> 
-    <img src="{% static 'cliente/img/estrella.png'%}" width="40px" style="margin-bottom: 5px; " alt="">
-    <img src="{% static 'cliente/img/estrella.png'%}" width="40px" style="margin-bottom: 5px;" alt="">
-    <img src="{% static 'cliente/img/estrella.png'%}" width="40px" style="margin-bottom: 5px;" alt="">
-    <img src="{% static 'cliente/img/estrella.png'%}" width="40px" style="margin-bottom: 5px;" alt=""> 100 mil Calificaciones
     </p>
-    <br>
-    <br>
+    {%if juegos.stock <= 0 %}
+    <p>Sin Stock</p>
+    <h3 >CLP {{juegos.precio}}$</h3>
+    {%else%}
+    <p>Stock Disponible: {{juegos.stock}}</p>
     <h3 >CLP {{juegos.precio}}$</h3>
     {% if user.is_authenticated %}
-    <button type="button" id="preciogow"  class="btn btn-primary-2"> <a href=" {% url 'carrito_add' correo=user.username idjuego=juegos.idjuego%}" style="color: #fff; text-decoration: none;">Agregar al carrito</a> </button>
+    <button type="button" id="preciogow"  class="btn btn-primary-2"> <a href=" {% url 'carrito_add' correo=user.username idjuego=juegos.idjuego %}"  style="color: #fff; text-decoration: none;">Agregar al carrito</a> </button>
+    
+    {% else %}
+    <button type="button" id="preciogow"  class="btn btn-primary-2"> <a href="{% url 'login' %}" style="color: #fff; text-decoration: none;">Agregar al carrito</a> </button>
+    {% endif %}
     {% if messages %}
             {% for m in messages%}
                 <script>
@@ -50,9 +52,9 @@
                 </script>
             {% endfor %}
         {% endif %}
-    {% else %}
-    <button type="button" id="preciogow"  class="btn btn-primary-2"> <a href="{% url 'login' %}" style="color: #fff; text-decoration: none;">Agregar al carrito</a> </button>
-    {% endif %}
+    {%endif%}
+
+    
   </div>
 </div>
 <!--info juego-->
@@ -83,10 +85,11 @@
  <details>
     <summary>TRAILER</summary>
     <div class="video">
-        <video controls autoplay muted src="{{juegos.video.url}}"></video>
+      {{juegos.video|safe}}
     </div>
 </details>
 {%endfor%}
 {% endif %} 
     
 {% endblock %}
+                                       

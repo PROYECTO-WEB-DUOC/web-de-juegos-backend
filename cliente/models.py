@@ -35,10 +35,22 @@ class Juegos(models.Model):
     online=models.BooleanField(default=False)
     mas18=models.BooleanField(default=False)
     id_categoria = models.ForeignKey('Categoria_juegos',on_delete=models.CASCADE, db_column='idcategoria')
-    video=models.FileField(upload_to="cliente", null=False)
+    video=models.TextField(null=True, blank=True) 
     estreno=models.BooleanField(default= False)
+    stock =models.IntegerField( null=True)
     def __str__(self):
         return str(self.nombre)
+
+    def del_stock(self):
+        if self.stock > 0:
+            self.stock -= 1
+            self.save()
+       
+        self.save()
+    def add_stock(self):
+        self.stock += 1
+        self.save()
+
 
     def cantidad_en_carrito(self):
         return sum(juego.cantidad for juego in self.cantjuegos_set.all())
@@ -63,7 +75,7 @@ class Carrito(models.Model):
     correo_cliente=models.EmailField(unique=True, max_length=100, blank=True, null=False)
     juegos = models.ManyToManyField(Juegos, through='CantJuegos')
     precio_total = models.CharField(max_length=20 ,null=True,default=0)
-
+    
     def actualizar_precio_total(self):
         total = sum(float(item.juego.precio) * item.cantidad for item in self.cantjuegos_set.all())
         self.precio_total = str(total)
@@ -81,3 +93,14 @@ class CantJuegos(models.Model):
     juego = models.ForeignKey('Juegos', on_delete=models.CASCADE)
     cantidad = models.PositiveIntegerField(default=1)
     
+
+class JuegosPagados(models.Model):
+    idpeticion=models.AutoField(primary_key=True)
+    correo_cliente=models.EmailField(unique=False, max_length=100, blank=True, null=False)
+    juegos = models.ManyToManyField(Juegos)
+    precio_total = models.CharField(max_length=20 ,null=True,default=0)
+
+class CantJuegosPagados(models.Model):
+    juegos_pagados = models.ForeignKey(JuegosPagados, on_delete=models.CASCADE)
+    juego = models.ForeignKey(Juegos, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField(default=1)   
